@@ -1,0 +1,1108 @@
+{
+  "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+  "id": "25171",
+  "self": "https://uin-gc.atlassian.net/rest/api/3/issue/25171",
+  "key": "RLGA-1",
+  "fields": {
+    "summary": "2026 CCA Gap Analysis",
+    "issuetype": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/issuetype/11059",
+      "id": "11059",
+      "description": "พระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ. ๒๕๕๐",
+      "iconUrl": "https://uin-gc.atlassian.net/rest/api/2/universal_avatar/view/type/POLARIS_ISSUETYPE/avatar/11704?size=medium",
+      "name": "MDES-CCA",
+      "subtask": false,
+      "avatarId": 11704,
+      "entityId": "7f4801dc-1f22-49d7-8fb5-5a5a54f8b94e",
+      "hierarchyLevel": 0
+    },
+    "attachment": [],
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "panel",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                }
+              ],
+              "attrs": {
+                "localId": "6026a40971ff"
+              }
+            }
+          ],
+          "attrs": {
+            "panelType": "info",
+            "localId": "c62a688e0caf"
+          }
+        },
+        {
+          "type": "table",
+          "attrs": {
+            "isNumberColumnEnabled": false,
+            "layout": "align-start",
+            "localId": "30d1c965-df33-4c5e-a1ca-7704b2d18f50"
+          },
+          "content": [
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "5330377dde2b"
+              },
+              "content": [
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "faffaa8db6ab",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "หัวข้อการตรวจสอบ",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "985cc6ceb8d5"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "ebd590140ac5",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "เกณฑ์การพิจารณา",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "2eb2402fca44"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "c50b7ea9280f",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "สถานะ ",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(ผ่าน/ไม่ผ่าน)",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "3196adb634c5"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "d3ea2da29978",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "หลักฐาน/อ้างอิง",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "8c92001ce371"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "ba1a724e20fe"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "cec16150e6df",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ระยะเวลาการเก็บ Log"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ วรรคหนึ่ง)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "239eee3f396e"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "08883050bbfa",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า "
+                        },
+                        {
+                          "type": "text",
+                          "text": "90 วัน",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " หรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "3cd940eed479"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "4269824c2be1",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "bb91f889-9ba3-4b0a-bb78-61e06f2dd336",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": " "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "23ce0b737cb7"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2592eb799ee9",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "4e0440ca9720"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การระบุตัวตนผู้ใช้"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ วรรคสอง)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "842f12ae2b85"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "2e4d588b51ae"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "905856bf-d851-4d4b-8b40-905a70e51360",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "01e727ce57bf"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "46417dd7ef6a"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ความถูกต้องของเวลา"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ (ประกาศกระทรวงฯ)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "4ea3202f1bad"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "f3e89d1ec594"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "c6230fc5-ef52-4760-b63a-f2c2f1c9b0c7",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "73200a21ca87"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "969f75f579ed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การให้ข้อมูลเจ้าหน้าที่"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๑๘)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "7d130d1f1990"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "8d4f5a547694"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "23022480-bc90-4cba-95aa-0a62983b901c",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": " "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "73cd8036f148"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "24e42222c139"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การเข้าถึงระบบ"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๕, ๗)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "39d6c2504b35"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "e099e7ab5273"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "701e0e78-79b0-41e3-bc86-4797102ef68b",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "fc866e745438"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "54b5f393a979"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การแก้ไขดัดแปลงข้อมูล"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๙, ๑๐)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "e42f5b2a96bc"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "12741f6acbd4"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "2e9e6beb-8933-4b1f-a606-c14ab8b3100f",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "c90e0ce09732"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "5585f3b02e0f"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ความมั่นคงปลอดภัย"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ (มาตรการเสริม))"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "489e363a253e"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "5e457a91caad"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "f0344f53-50ed-4572-b7a4-8de6a3d5f3ea",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "90ce604ce1fe"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "903f0fa2c2f7"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "comment": {
+      "comments": [],
+      "self": "https://uin-gc.atlassian.net/rest/api/3/issue/25171/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "reporter": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+      "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+      },
+      "displayName": "UIN CMP",
+      "active": true,
+      "timeZone": "Asia/Bangkok",
+      "accountType": "atlassian"
+    },
+    "assignee": null,
+    "priority": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/priority/3",
+      "iconUrl": "https://uin-gc.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "status": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/status/11157",
+      "description": "",
+      "iconUrl": "https://uin-gc.atlassian.net/images/icons/statuses/generic.png",
+      "name": "Complied",
+      "id": "11157",
+      "statusCategory": {
+        "self": "https://uin-gc.atlassian.net/rest/api/3/statuscategory/3",
+        "id": 3,
+        "key": "done",
+        "colorName": "green",
+        "name": "Done"
+      }
+    }
+  }
+}

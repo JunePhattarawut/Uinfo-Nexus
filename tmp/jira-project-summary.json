@@ -1,0 +1,148 @@
+{
+  "fetchedAt": "2026-07-11T16:06:15.868Z",
+  "site": "https://uin-gc.atlassian.net",
+  "projectCount": 20,
+  "totalIssues": 4071,
+  "projects": [
+    {
+      "key": "CPAR",
+      "name": "Corrective and Preventive Actions Request",
+      "type": "service_desk",
+      "lead": "UIN CMP",
+      "totalIssues": 285
+    },
+    {
+      "key": "CTI",
+      "name": "Cyber Threat Intelligence",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 1625
+    },
+    {
+      "key": "CTR",
+      "name": "Contract Review",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 393
+    },
+    {
+      "key": "DAR",
+      "name": "Document Action Request",
+      "type": "service_desk",
+      "lead": "UIN CMP",
+      "totalIssues": 42
+    },
+    {
+      "key": "GSR",
+      "name": "GC Service Request",
+      "type": "service_desk",
+      "lead": "UIN CMP",
+      "totalIssues": 0
+    },
+    {
+      "key": "GWM",
+      "name": "GC Work Management",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 105
+    },
+    {
+      "key": "IN",
+      "name": "Insurance",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 21
+    },
+    {
+      "key": "MA",
+      "name": "Management Approval",
+      "type": "service_desk",
+      "lead": "UIN CMP",
+      "totalIssues": 29
+    },
+    {
+      "key": "OM",
+      "name": "Objective Measurement",
+      "type": "product_discovery",
+      "lead": "UIN CMP",
+      "totalIssues": 18
+    },
+    {
+      "key": "RA",
+      "name": "Risk Assessment",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 8
+    },
+    {
+      "key": "RAS",
+      "name": "Risk Assessment Sheet",
+      "type": "product_discovery",
+      "lead": "UIN CMP",
+      "totalIssues": 212
+    },
+    {
+      "key": "RLGA",
+      "name": "Regulatory and Law Gap Analysis",
+      "type": "product_discovery",
+      "lead": "UIN CMP",
+      "totalIssues": 4
+    },
+    {
+      "key": "RLR",
+      "name": "Regulatory and Law Review",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 618
+    },
+    {
+      "key": "RTP",
+      "name": "Risk Treatment Plan",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 22
+    },
+    {
+      "key": "TPM",
+      "name": "Third Party Management",
+      "type": "service_desk",
+      "lead": "UIN CMP",
+      "totalIssues": 0
+    },
+    {
+      "key": "TPRM",
+      "name": "Third Party Risk Management",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 11
+    },
+    {
+      "key": "TPRR",
+      "name": "Third Party Risk Report",
+      "type": "product_discovery",
+      "lead": "UIN CMP",
+      "totalIssues": 16
+    },
+    {
+      "key": "UCR",
+      "name": "Compliance Review",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 191
+    },
+    {
+      "key": "UDC",
+      "name": "Document Control",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 258
+    },
+    {
+      "key": "UIA",
+      "name": "Internal Audit",
+      "type": "business",
+      "lead": "UIN CMP",
+      "totalIssues": 213
+    }
+  ]
+}

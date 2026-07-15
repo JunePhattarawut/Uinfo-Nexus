@@ -1,0 +1,133 @@
+{
+  "jiraSummary": {
+    "key": "RLGA-1",
+    "id": "25171",
+    "summary": "2026 CCA Gap Analysis",
+    "descriptionTopTypes": [
+      "panel",
+      "table"
+    ],
+    "issuetype": "MDES-CCA",
+    "status": "Complied",
+    "statusId": "11157",
+    "priority": "Medium",
+    "labels": [],
+    "assignee": null,
+    "assigneeAccountId": null,
+    "reporter": "UIN CMP",
+    "reporterAccountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+    "creator": "UIN CMP",
+    "created": "2026-04-17T15:23:01.906+0700",
+    "updated": "2026-07-09T17:31:41.201+0700",
+    "dueDate": null,
+    "comments": 0,
+    "totalComments": 0,
+    "attachments": 0
+  },
+  "mapped": {
+    "key": "RLGA-1",
+    "id": "25171",
+    "self": "https://uin-gc.atlassian.net/rest/api/3/issue/25171",
+    "url": "https://uin-gc.atlassian.net/browse/RLGA-1",
+    "summary": "2026 CCA Gap Analysis",
+    "descriptionTopTypes": [
+      "panel",
+      "table"
+    ],
+    "issuetype": "MDES-CCA",
+    "status": "Complied",
+    "statusId": "11157",
+    "priority": "MEDIUM",
+    "labels": [],
+    "assignee": null,
+    "reporter": "alice@demo.local",
+    "dueDate": null,
+    "storyPoints": null,
+    "comments": 0,
+    "attachments": 0
+  },
+  "meaningfulFieldCount": 23,
+  "unsupportedMeaningfulCount": 16,
+  "unsupportedMeaningful": [
+    {
+      "key": "statuscategorychangedate",
+      "name": "Status Category Changed",
+      "kind": "string"
+    },
+    {
+      "key": "project",
+      "name": "Project",
+      "kind": "object(7)"
+    },
+    {
+      "key": "statusCategory",
+      "name": "Status Category",
+      "kind": "object(5)"
+    },
+    {
+      "key": "workratio",
+      "name": "Work Ratio",
+      "kind": "number"
+    },
+    {
+      "key": "watches",
+      "name": "Watchers",
+      "kind": "object(3)"
+    },
+    {
+      "key": "lastViewed",
+      "name": "Last Viewed",
+      "kind": "string"
+    },
+    {
+      "key": "created",
+      "name": "Created",
+      "kind": "string"
+    },
+    {
+      "key": "customfield_11432",
+      "name": "Insights",
+      "kind": "number"
+    },
+    {
+      "key": "customfield_10019",
+      "name": "Rank",
+      "kind": "string"
+    },
+    {
+      "key": "updated",
+      "name": "Updated",
+      "kind": "string"
+    },
+    {
+      "key": "creator",
+      "name": "Creator",
+      "kind": "object(7)"
+    },
+    {
+      "key": "aggregateprogress",
+      "name": "Σ Progress",
+      "kind": "object(2)"
+    },
+    {
+      "key": "progress",
+      "name": "Progress",
+      "kind": "object(2)"
+    },
+    {
+      "key": "votes",
+      "name": "Votes",
+      "kind": "object(3)"
+    },
+    {
+      "key": "customfield_11808",
+      "name": "Complied",
+      "kind": "number"
+    },
+    {
+      "key": "worklog",
+      "name": "Log Work",
+      "kind": "object(4)"
+    }
+  ]
+}

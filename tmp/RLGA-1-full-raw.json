@@ -1,0 +1,2185 @@
+{
+  "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+  "id": "25171",
+  "self": "https://uin-gc.atlassian.net/rest/api/3/issue/25171",
+  "key": "RLGA-1",
+  "renderedFields": {
+    "statuscategorychangedate": "11/May/26 4:03 PM",
+    "issuetype": null,
+    "timespent": null,
+    "project": null,
+    "fixVersions": null,
+    "aggregatetimespent": null,
+    "statusCategory": null,
+    "resolution": null,
+    "customfield_11841": "",
+    "customfield_11436": "",
+    "customfield_11435": "",
+    "resolutiondate": null,
+    "workratio": null,
+    "watches": null,
+    "lastViewed": "Today 11:10 PM",
+    "created": "17/Apr/26 3:23 PM",
+    "customfield_11430": null,
+    "customfield_11432": null,
+    "priority": null,
+    "customfield_11431": "",
+    "customfield_11434": null,
+    "labels": null,
+    "customfield_11433": null,
+    "customfield_11427": null,
+    "customfield_10019": null,
+    "timeestimate": null,
+    "customfield_11429": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": null,
+    "customfield_11428": null,
+    "issuelinks": null,
+    "assignee": null,
+    "updated": "Thursday 5:31 PM",
+    "status": null,
+    "components": null,
+    "timeoriginalestimate": null,
+    "description": "<div class=\"panel\" style=\"background-color: #deebff;border-width: 1px;\"><div class=\"panelContent\" style=\"background-color: #deebff;\">\n<p><b>แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง</b></p>\n</div></div>\n\n<div class='table-wrap'>\n<table class='confluenceTable'><tbody>\n<tr>\n<th class='confluenceTh'><b>หัวข้อการตรวจสอบ</b></th>\n<th class='confluenceTh'><b>เกณฑ์การพิจารณา</b></th>\n<th class='confluenceTh'><b>สถานะ</b> <br/>\n<b>(ผ่าน/ไม่ผ่าน)</b></th>\n<th class='confluenceTh'><b>หลักฐาน/อ้างอิง</b></th>\n</tr>\n<tr>\n<td class='confluenceTd'>ระยะเวลาการเก็บ Log<br/>\n(มาตรา ๒๖ วรรคหนึ่ง)</td>\n<td class='confluenceTd'>มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า <b>90 วัน</b> หรือไม่?</td>\n<td class='confluenceTd'><font color=\"#36B37E\"><b>[ ผ่าน ]</b></font></td>\n<td class='confluenceTd'>&nbsp;</td>\n</tr>\n<tr>\n<td class='confluenceTd'>การระบุตัวตนผู้ใช้<br/>\n(มาตรา ๒๖ วรรคสอง)</td>\n<td class='confluenceTd'>ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?</td>\n<td class='confluenceTd'><font color=\"#36B37E\"><b>[ ผ่าน ]</b></font></td>\n<td class='confluenceTd'>&nbsp;</td>\n</tr>\n<tr>\n<td class='confluenceTd'>ความถูกต้องของเวลา<br/>\n(มาตรา ๒๖ (ประกาศกระทรวงฯ)</td>\n<td class='confluenceTd'>มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?</td>\n<td class='confluenceTd'><font color=\"#36B37E\"><b>[ ผ่าน ]</b></font></td>\n<td class='confluenceTd'>&nbsp;</td>\n</tr>\n<tr>\n<td class='confluenceTd'>การให้ข้อมูลเจ้าหน้าที่<br/>\n(มาตรา ๑๘)</td>\n<td class='confluenceTd'>มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?</td>\n<td class='confluenceTd'><font color=\"#36B37E\"><b>[ ผ่าน ]</b></font></td>\n<td class='confluenceTd'>&nbsp;</td>\n</tr>\n<tr>\n<td class='confluenceTd'>การเข้าถึงระบบ<br/>\n(มาตรา ๕, ๗)</td>\n<td class='confluenceTd'>มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?</td>\n<td class='confluenceTd'><font color=\"#36B37E\"><b>[ ผ่าน ]</b></font></td>\n<td class='confluenceTd'>&nbsp;</td>\n</tr>\n<tr>\n<td class='confluenceTd'>การแก้ไขดัดแปลงข้อมูล<br/>\n(มาตรา ๙, ๑๐)</td>\n<td class='confluenceTd'>มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?</td>\n<td class='confluenceTd'><font color=\"#36B37E\"><b>[ ผ่าน ]</b></font></td>\n<td class='confluenceTd'>&nbsp;</td>\n</tr>\n<tr>\n<td class='confluenceTd'>ความมั่นคงปลอดภัย<br/>\n(มาตรา ๒๖ (มาตรการเสริม))</td>\n<td class='confluenceTd'>Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?</td>\n<td class='confluenceTd'><font color=\"#36B37E\"><b>[ ผ่าน ]</b></font></td>\n<td class='confluenceTd'>&nbsp;</td>\n</tr>\n</tbody></table>\n</div>\n",
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "summary": null,
+    "creator": null,
+    "subtasks": null,
+    "customfield_10482": null,
+    "reporter": null,
+    "aggregateprogress": null,
+    "customfield_10001": null,
+    "environment": "",
+    "duedate": null,
+    "progress": null,
+    "votes": null,
+    "comment": {
+      "comments": [],
+      "self": "https://uin-gc.atlassian.net/rest/api/3/issue/25171/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "customfield_11809": null,
+    "customfield_11808": null,
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    }
+  },
+  "names": {
+    "statuscategorychangedate": "Status Category Changed",
+    "issuetype": "Issue Type",
+    "timespent": "Time Spent",
+    "project": "Project",
+    "fixVersions": "Fix versions",
+    "aggregatetimespent": "Σ Time Spent",
+    "statusCategory": "Status Category",
+    "resolution": "Resolution",
+    "customfield_11841": "Key Point",
+    "customfield_11436": "Delivery status",
+    "customfield_11435": "Delivery progress",
+    "resolutiondate": "Resolved",
+    "workratio": "Work Ratio",
+    "watches": "Watchers",
+    "lastViewed": "Last Viewed",
+    "created": "Created",
+    "customfield_11430": "Atlassian project",
+    "customfield_11432": "Insights",
+    "priority": "Priority",
+    "customfield_11431": "Atlassian project status",
+    "customfield_11434": "Linked items",
+    "labels": "Labels",
+    "customfield_11433": "Comments",
+    "customfield_11427": "Idea archived",
+    "customfield_10019": "Rank",
+    "timeestimate": "Remaining Estimate",
+    "customfield_11429": "Idea archived on",
+    "aggregatetimeoriginalestimate": "Σ Original Estimate",
+    "versions": "Affects versions",
+    "customfield_11428": "Idea archived by",
+    "issuelinks": "Linked Issues",
+    "assignee": "Assignee",
+    "updated": "Updated",
+    "status": "Status",
+    "components": "Components",
+    "timeoriginalestimate": "Original estimate",
+    "description": "Description",
+    "timetracking": "Time tracking",
+    "customfield_10015": "Start date",
+    "security": "Security Level",
+    "attachment": "Attachment",
+    "aggregatetimeestimate": "Σ Remaining Estimate",
+    "summary": "Summary",
+    "creator": "Creator",
+    "subtasks": "Sub-tasks",
+    "customfield_10482": "Goals",
+    "reporter": "Reporter",
+    "aggregateprogress": "Σ Progress",
+    "customfield_10001": "Team",
+    "environment": "Environment",
+    "duedate": "Due date",
+    "progress": "Progress",
+    "votes": "Votes",
+    "comment": "Comment",
+    "customfield_11809": "Not Complied",
+    "customfield_11808": "Complied",
+    "worklog": "Log Work"
+  },
+  "schema": {
+    "statuscategorychangedate": {
+      "type": "datetime",
+      "system": "statuscategorychangedate"
+    },
+    "issuetype": {
+      "type": "issuetype",
+      "system": "issuetype"
+    },
+    "timespent": {
+      "type": "number",
+      "system": "timespent"
+    },
+    "project": {
+      "type": "project",
+      "system": "project"
+    },
+    "fixVersions": {
+      "type": "array",
+      "items": "version",
+      "system": "fixVersions"
+    },
+    "aggregatetimespent": {
+      "type": "number",
+      "system": "aggregatetimespent"
+    },
+    "statusCategory": {
+      "type": "statusCategory",
+      "system": "statusCategory"
+    },
+    "resolution": {
+      "type": "resolution",
+      "system": "resolution"
+    },
+    "customfield_11841": {
+      "type": "string",
+      "custom": "com.atlassian.jira.plugin.system.customfieldtypes:textfield",
+      "customId": 11841
+    },
+    "customfield_11436": {
+      "type": "string",
+      "custom": "jira.polaris:delivery-status",
+      "customId": 11436
+    },
+    "customfield_11435": {
+      "type": "string",
+      "custom": "jira.polaris:delivery-progress",
+      "customId": 11435
+    },
+    "resolutiondate": {
+      "type": "datetime",
+      "system": "resolutiondate"
+    },
+    "workratio": {
+      "type": "number",
+      "system": "workratio"
+    },
+    "watches": {
+      "type": "watches",
+      "system": "watches"
+    },
+    "lastViewed": {
+      "type": "datetime",
+      "system": "lastViewed"
+    },
+    "created": {
+      "type": "datetime",
+      "system": "created"
+    },
+    "customfield_11430": {
+      "type": "string",
+      "custom": "jira.polaris:atlassian-project",
+      "customId": 11430
+    },
+    "customfield_11432": {
+      "type": "number",
+      "custom": "jira.polaris:count-insights",
+      "customId": 11432
+    },
+    "priority": {
+      "type": "priority",
+      "system": "priority"
+    },
+    "customfield_11431": {
+      "type": "string",
+      "custom": "jira.polaris:atlassian-project-status",
+      "customId": 11431
+    },
+    "customfield_11434": {
+      "type": "number",
+      "custom": "jira.polaris:count-linked-issues",
+      "customId": 11434
+    },
+    "labels": {
+      "type": "array",
+      "items": "string",
+      "system": "labels"
+    },
+    "customfield_11433": {
+      "type": "number",
+      "custom": "jira.polaris:count-issue-comments",
+      "customId": 11433
+    },
+    "customfield_11427": {
+      "type": "option",
+      "custom": "com.atlassian.jira.plugin.system.customfieldtypes:select",
+      "customId": 11427
+    },
+    "customfield_10019": {
+      "type": "any",
+      "custom": "com.pyxis.greenhopper.jira:gh-lexo-rank",
+      "customId": 10019
+    },
+    "timeestimate": {
+      "type": "number",
+      "system": "timeestimate"
+    },
+    "customfield_11429": {
+      "type": "datetime",
+      "custom": "com.atlassian.jira.plugin.system.customfieldtypes:datetime",
+      "customId": 11429
+    },
+    "aggregatetimeoriginalestimate": {
+      "type": "number",
+      "system": "aggregatetimeoriginalestimate"
+    },
+    "versions": {
+      "type": "array",
+      "items": "version",
+      "system": "versions"
+    },
+    "customfield_11428": {
+      "type": "array",
+      "items": "user",
+      "custom": "com.atlassian.jira.plugin.system.customfieldtypes:people",
+      "customId": 11428,
+      "configuration": {
+        "isMulti": true
+      }
+    },
+    "issuelinks": {
+      "type": "array",
+      "items": "issuelinks",
+      "system": "issuelinks"
+    },
+    "assignee": {
+      "type": "user",
+      "system": "assignee"
+    },
+    "updated": {
+      "type": "datetime",
+      "system": "updated"
+    },
+    "status": {
+      "type": "status",
+      "system": "status"
+    },
+    "components": {
+      "type": "array",
+      "items": "component",
+      "system": "components"
+    },
+    "timeoriginalestimate": {
+      "type": "number",
+      "system": "timeoriginalestimate"
+    },
+    "description": {
+      "type": "string",
+      "system": "description"
+    },
+    "timetracking": {
+      "type": "timetracking",
+      "system": "timetracking"
+    },
+    "customfield_10015": {
+      "type": "date",
+      "custom": "com.atlassian.jira.plugin.system.customfieldtypes:datepicker",
+      "customId": 10015
+    },
+    "security": {
+      "type": "securitylevel",
+      "system": "security"
+    },
+    "attachment": {
+      "type": "array",
+      "items": "attachment",
+      "system": "attachment"
+    },
+    "aggregatetimeestimate": {
+      "type": "number",
+      "system": "aggregatetimeestimate"
+    },
+    "summary": {
+      "type": "string",
+      "system": "summary"
+    },
+    "creator": {
+      "type": "user",
+      "system": "creator"
+    },
+    "subtasks": {
+      "type": "array",
+      "items": "issuelinks",
+      "system": "subtasks"
+    },
+    "customfield_10482": {
+      "type": "array",
+      "items": "Goals",
+      "custom": "com.atlassian.jira.plugin.system.customfieldtypes:goals",
+      "customId": 10482
+    },
+    "reporter": {
+      "type": "user",
+      "system": "reporter"
+    },
+    "aggregateprogress": {
+      "type": "progress",
+      "system": "aggregateprogress"
+    },
+    "customfield_10001": {
+      "type": "team",
+      "custom": "com.atlassian.jira.plugin.system.customfieldtypes:atlassian-team",
+      "customId": 10001,
+      "configuration": {
+        "com.atlassian.jira.plugin.system.customfieldtypes:atlassian-team": true
+      }
+    },
+    "environment": {
+      "type": "string",
+      "system": "environment"
+    },
+    "duedate": {
+      "type": "date",
+      "system": "duedate"
+    },
+    "progress": {
+      "type": "progress",
+      "system": "progress"
+    },
+    "votes": {
+      "type": "votes",
+      "system": "votes"
+    },
+    "comment": {
+      "type": "comments-page",
+      "system": "comment"
+    },
+    "customfield_11809": {
+      "type": "number",
+      "custom": "jira.polaris:boolean",
+      "customId": 11809
+    },
+    "customfield_11808": {
+      "type": "number",
+      "custom": "jira.polaris:boolean",
+      "customId": 11808
+    },
+    "worklog": {
+      "type": "array",
+      "items": "worklog",
+      "system": "worklog"
+    }
+  },
+  "changelog": {
+    "startAt": 0,
+    "maxResults": 20,
+    "total": 20,
+    "histories": [
+      {
+        "id": "58615",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-06-17T15:28:56.781+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log\n(มาตรา ๒๖ วรรคหนึ่ง)|มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า *90 วัน* หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้\n(มาตรา ๒๖ วรรคสอง)|ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา\n(มาตรา ๒๖ (ประกาศกระทรวงฯ)|มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การให้ข้อมูลเจ้าหน้าที่\n(มาตรา ๑๘)|มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การเข้าถึงระบบ\n(มาตรา ๕, ๗)|มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การแก้ไขดัดแปลงข้อมูล\n(มาตรา ๙, ๑๐)|มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความมั่นคงปลอดภัย\n(มาตรา ๒๖ (มาตรการเสริม))|Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |",
+            "to": null,
+            "toString": "{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log\n(มาตรา ๒๖ วรรคหนึ่ง)|มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า *90 วัน* หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้\n(มาตรา ๒๖ วรรคสอง)|ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา\n(มาตรา ๒๖ (ประกาศกระทรวงฯ)|มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การให้ข้อมูลเจ้าหน้าที่\n(มาตรา ๑๘)|มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การเข้าถึงระบบ\n(มาตรา ๕, ๗)|มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การแก้ไขดัดแปลงข้อมูล\n(มาตรา ๙, ๑๐)|มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความมั่นคงปลอดภัย\n(มาตรา ๒๖ (มาตรการเสริม))|Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56109",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:23:50.109+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log\n(มาตรา ๒๖ วรรคหนึ่ง)|มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า *90 วัน* หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้\n(มาตรา ๒๖ วรรคสอง)|ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา\n(มาตรา ๒๖ (ประกาศกระทรวงฯ)|มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การให้ข้อมูลเจ้าหน้าที่\n(มาตรา ๑๘)|มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การเข้าถึงระบบ\n(มาตรา ๕, ๗)|มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การแก้ไขดัดแปลงข้อมูล\n(มาตรา ๙, ๑๐)|มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความมั่นคงปลอดภัย\n(มาตรา ๒๖ (มาตรการเสริม))|Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |",
+            "to": null,
+            "toString": "{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log\n(มาตรา ๒๖ วรรคหนึ่ง)|มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า *90 วัน* หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้\n(มาตรา ๒๖ วรรคสอง)|ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา\n(มาตรา ๒๖ (ประกาศกระทรวงฯ)|มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การให้ข้อมูลเจ้าหน้าที่\n(มาตรา ๑๘)|มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การเข้าถึงระบบ\n(มาตรา ๕, ๗)|มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การแก้ไขดัดแปลงข้อมูล\n(มาตรา ๙, ๑๐)|มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความมั่นคงปลอดภัย\n(มาตรา ๒๖ (มาตรการเสริม))|Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56108",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:22:39.766+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log\n(มาตรา ๒๖ วรรคหนึ่ง)|มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า *90 วัน* หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้\n(มาตรา ๒๖ วรรคสอง)|ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา\n(มาตรา ๒๖ (ประกาศกระทรวงฯ)|มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การให้ข้อมูลเจ้าหน้าที่\n(มาตรา ๑๘)|มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การเข้าถึงระบบ\n(มาตรา ๕, ๗)|มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การแก้ไขดัดแปลงข้อมูล\n(มาตรา ๙, ๑๐)|มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความมั่นคงปลอดภัย\n(มาตรา ๒๖ (มาตรการเสริม))|Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56107",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:13:37.771+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56100",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:08:16.827+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n*แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง*\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56099",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:06:12.773+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56098",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:03:29.867+0700",
+        "items": [
+          {
+            "field": "status",
+            "fieldtype": "jira",
+            "fieldId": "status",
+            "from": "11155",
+            "fromString": "Reviewing",
+            "to": "11157",
+            "toString": "Complied"
+          }
+        ]
+      },
+      {
+        "id": "56097",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:01:51.706+0700",
+        "items": [
+          {
+            "field": "Complied",
+            "fieldtype": "custom",
+            "fieldId": "customfield_11808",
+            "from": null,
+            "fromString": "0",
+            "to": null,
+            "toString": "1"
+          }
+        ]
+      },
+      {
+        "id": "56096",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:01:43.566+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ* \n*(ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56095",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:01:13.085+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*แนวทางปรับปรุง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|ผ่าน| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|ผ่าน| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|ผ่าน| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|ผ่าน| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|ผ่าน| |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*หลักฐาน/อ้างอิง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|{color:#36B37E}*[ ผ่าน ]*{color}| |"
+          }
+        ]
+      },
+      {
+        "id": "56094",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T16:00:22.793+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*แนวทางปรับปรุง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?| | |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?| | |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?| | |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?| | |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?| | |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*แนวทางปรับปรุง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?|ผ่าน| |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?|ผ่าน| |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?|ผ่าน| |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?|ผ่าน| |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?|ผ่าน| |"
+          }
+        ]
+      },
+      {
+        "id": "56093",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T15:59:42.696+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*แนวทางปรับปรุง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?| | |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?| | |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?| | |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?| | |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?| | |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*แนวทางปรับปรุง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?| | |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?| | |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?| | |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?| | |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?| | |"
+          }
+        ]
+      },
+      {
+        "id": "56092",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T15:59:27.083+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": "{panel:bgColor=#deebff}\n\n{panel}\n\n||*No*||*Description*||*Evidence*||\n| | | |\n| | | |",
+            "to": null,
+            "toString": "\n\n{panel:bgColor=#deebff}\n\n{panel}\n\n||*หัวข้อการตรวจสอบ*||*เกณฑ์การพิจารณา*||*สถานะ (ผ่าน/ไม่ผ่าน)*||*แนวทางปรับปรุง*||\n|ระยะเวลาการเก็บ Log|มีการตั้งค่าระบบให้เก็บ Log ย้อนหลังได้อย่างน้อย 90 วันหรือไม่?| | |\n|ความครบถ้วนของข้อมูล|Log ที่เก็บสามารถระบุตัวตนผู้ใช้งาน (Username/IP) และวันเวลาได้ชัดเจนหรือไม่?| | |\n|ความปลอดภัยของ Log|มีการจำกัดสิทธิ์ (Access Control) ไม่ให้พนักงานทั่วไปแก้ไขหรือลบ Log หรือไม่?| | |\n|ความถูกต้องของเวลา|Server ทุกเครื่องมีการ Sync เวลาให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?| | |\n|การระบุตัวตนผู้ใช้งาน|มีระบบลงทะเบียนชื่อ-นามสกุล หรือข้อมูลที่ยืนยันตัวตนพนักงาน/ลูกค้าที่ใช้ Wi-Fi หรือไม่?| | |"
+          }
+        ]
+      },
+      {
+        "id": "56091",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T15:58:32.746+0700",
+        "items": [
+          {
+            "field": "description",
+            "fieldtype": "jira",
+            "fieldId": "description",
+            "from": null,
+            "fromString": null,
+            "to": null,
+            "toString": "{panel:bgColor=#deebff}\n\n{panel}\n\n||*No*||*Description*||*Evidence*||\n| | | |\n| | | |"
+          }
+        ]
+      },
+      {
+        "id": "56080",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-05-11T13:51:33.249+0700",
+        "items": [
+          {
+            "field": "RemoteWorkItemLink",
+            "fieldtype": "jira",
+            "from": null,
+            "fromString": null,
+            "to": "11486",
+            "toString": "This work item links to \"Page (Confluence)\""
+          }
+        ]
+      },
+      {
+        "id": "55962",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-29T10:10:18.318+0700",
+        "items": [
+          {
+            "field": "status",
+            "fieldtype": "jira",
+            "fieldId": "status",
+            "from": "11156",
+            "fromString": "To Do",
+            "to": "11155",
+            "toString": "Reviewing"
+          }
+        ]
+      },
+      {
+        "id": "55955",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-29T10:05:33.289+0700",
+        "items": [
+          {
+            "field": "summary",
+            "fieldtype": "jira",
+            "fieldId": "summary",
+            "from": null,
+            "fromString": "2026 Computer Laws Gap Analysis",
+            "to": null,
+            "toString": "2026 CCA Gap Analysis"
+          }
+        ]
+      },
+      {
+        "id": "55947",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-29T10:02:02.110+0700",
+        "items": [
+          {
+            "field": "summary",
+            "fieldtype": "jira",
+            "fieldId": "summary",
+            "from": null,
+            "fromString": "1",
+            "to": null,
+            "toString": "2026 Computer Laws Gap Analysis"
+          }
+        ]
+      },
+      {
+        "id": "55846",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-17T17:03:15.467+0700",
+        "items": [
+          {
+            "field": "Complied",
+            "fieldtype": "custom",
+            "fieldId": "customfield_11808",
+            "from": null,
+            "fromString": "1",
+            "to": null,
+            "toString": "0"
+          }
+        ]
+      },
+      {
+        "id": "55845",
+        "author": {
+          "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+          "avatarUrls": {
+            "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+            "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+          },
+          "displayName": "UIN CMP",
+          "active": true,
+          "timeZone": "Asia/Bangkok",
+          "accountType": "atlassian"
+        },
+        "created": "2026-04-17T17:03:13.473+0700",
+        "items": [
+          {
+            "field": "Complied",
+            "fieldtype": "custom",
+            "fieldId": "customfield_11808",
+            "from": null,
+            "fromString": null,
+            "to": null,
+            "toString": "1"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": {
+    "statuscategorychangedate": "2026-05-11T16:03:29.867+0700",
+    "issuetype": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/issuetype/11059",
+      "id": "11059",
+      "description": "พระราชบัญญัติว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ พ.ศ. ๒๕๕๐",
+      "iconUrl": "https://uin-gc.atlassian.net/rest/api/2/universal_avatar/view/type/POLARIS_ISSUETYPE/avatar/11704?size=medium",
+      "name": "MDES-CCA",
+      "subtask": false,
+      "avatarId": 11704,
+      "entityId": "7f4801dc-1f22-49d7-8fb5-5a5a54f8b94e",
+      "hierarchyLevel": 0
+    },
+    "timespent": null,
+    "project": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/project/10441",
+      "id": "10441",
+      "key": "RLGA",
+      "name": "Regulatory and Law Gap Analysis",
+      "projectTypeKey": "product_discovery",
+      "simplified": true,
+      "avatarUrls": {
+        "48x48": "https://uin-gc.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11735",
+        "24x24": "https://uin-gc.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11735?size=small",
+        "16x16": "https://uin-gc.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11735?size=xsmall",
+        "32x32": "https://uin-gc.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11735?size=medium"
+      }
+    },
+    "fixVersions": [],
+    "aggregatetimespent": null,
+    "statusCategory": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/statuscategory/3",
+      "id": 3,
+      "key": "done",
+      "colorName": "green",
+      "name": "Done"
+    },
+    "resolution": null,
+    "customfield_11841": null,
+    "customfield_11436": null,
+    "customfield_11435": null,
+    "resolutiondate": null,
+    "workratio": -1,
+    "watches": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/issue/RLGA-1/watchers",
+      "watchCount": 1,
+      "isWatching": false
+    },
+    "lastViewed": "2026-07-11T23:10:35.361+0700",
+    "created": "2026-04-17T15:23:01.906+0700",
+    "customfield_11430": null,
+    "customfield_11432": 0,
+    "priority": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/priority/3",
+      "iconUrl": "https://uin-gc.atlassian.net/images/icons/priorities/medium_new.svg",
+      "name": "Medium",
+      "id": "3"
+    },
+    "customfield_11431": null,
+    "customfield_11434": null,
+    "labels": [],
+    "customfield_11433": null,
+    "customfield_11427": null,
+    "customfield_10019": "0|i00mwj:",
+    "timeestimate": null,
+    "customfield_11429": null,
+    "aggregatetimeoriginalestimate": null,
+    "versions": [],
+    "customfield_11428": null,
+    "issuelinks": [],
+    "assignee": null,
+    "updated": "2026-07-09T17:31:41.201+0700",
+    "status": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/status/11157",
+      "description": "",
+      "iconUrl": "https://uin-gc.atlassian.net/images/icons/statuses/generic.png",
+      "name": "Complied",
+      "id": "11157",
+      "statusCategory": {
+        "self": "https://uin-gc.atlassian.net/rest/api/3/statuscategory/3",
+        "id": 3,
+        "key": "done",
+        "colorName": "green",
+        "name": "Done"
+      }
+    },
+    "components": [],
+    "timeoriginalestimate": null,
+    "description": {
+      "type": "doc",
+      "version": 1,
+      "content": [
+        {
+          "type": "panel",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "แบบประเมินความสอดคล้องกฎหมายและข้อกำหนดที่เกี่ยวข้อง",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                }
+              ],
+              "attrs": {
+                "localId": "6026a40971ff"
+              }
+            }
+          ],
+          "attrs": {
+            "panelType": "info",
+            "localId": "c62a688e0caf"
+          }
+        },
+        {
+          "type": "table",
+          "attrs": {
+            "isNumberColumnEnabled": false,
+            "layout": "align-start",
+            "localId": "30d1c965-df33-4c5e-a1ca-7704b2d18f50"
+          },
+          "content": [
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "5330377dde2b"
+              },
+              "content": [
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "faffaa8db6ab",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "หัวข้อการตรวจสอบ",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "985cc6ceb8d5"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "ebd590140ac5",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "เกณฑ์การพิจารณา",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "2eb2402fca44"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "c50b7ea9280f",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "สถานะ ",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(ผ่าน/ไม่ผ่าน)",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "3196adb634c5"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableHeader",
+                  "attrs": {
+                    "localId": "d3ea2da29978",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "หลักฐาน/อ้างอิง",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "8c92001ce371"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "ba1a724e20fe"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "cec16150e6df",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ระยะเวลาการเก็บ Log"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ วรรคหนึ่ง)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "239eee3f396e"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "08883050bbfa",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีการเก็บรักษาข้อมูลจราจรทางคอมพิวเตอร์ไว้ไม่น้อยกว่า "
+                        },
+                        {
+                          "type": "text",
+                          "text": "90 วัน",
+                          "marks": [
+                            {
+                              "type": "strong"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "text": " หรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "3cd940eed479"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "4269824c2be1",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "bb91f889-9ba3-4b0a-bb78-61e06f2dd336",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": " "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "23ce0b737cb7"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2592eb799ee9",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "4e0440ca9720"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การระบุตัวตนผู้ใช้"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ วรรคสอง)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "842f12ae2b85"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ระบบสามารถระบุตัวบุคคล (Identification) ของผู้ใช้งาน/พนักงาน ได้ถูกต้องหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "2e4d588b51ae"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "905856bf-d851-4d4b-8b40-905a70e51360",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "01e727ce57bf"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "46417dd7ef6a"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ความถูกต้องของเวลา"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ (ประกาศกระทรวงฯ)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "4ea3202f1bad"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีการ Sync เวลาของอุปกรณ์ทุกตัวให้ตรงกับเวลามาตรฐาน (NTP) หรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "f3e89d1ec594"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "c6230fc5-ef52-4760-b63a-f2c2f1c9b0c7",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "73200a21ca87"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "969f75f579ed"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การให้ข้อมูลเจ้าหน้าที่"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๑๘)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "7d130d1f1990"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีช่องทางหรือผู้รับผิดชอบในการส่งมอบข้อมูลให้เจ้าหน้าที่เมื่อมีหมายเรียกหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "8d4f5a547694"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "23022480-bc90-4cba-95aa-0a62983b901c",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": " "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "73cd8036f148"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "24e42222c139"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การเข้าถึงระบบ"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๕, ๗)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "39d6c2504b35"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีมาตรการป้องกันการเข้าถึงระบบและข้อมูล (Access Control) โดยไม่ได้รับอนุญาตหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "e099e7ab5273"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "701e0e78-79b0-41e3-bc86-4797102ef68b",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "fc866e745438"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "54b5f393a979"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "การแก้ไขดัดแปลงข้อมูล"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๙, ๑๐)"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "e42f5b2a96bc"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "มีระบบป้องกันการแก้ไข ลบ หรือทำลายข้อมูลในระบบโดยมิชอบหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "12741f6acbd4"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "2e9e6beb-8933-4b1f-a606-c14ab8b3100f",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "c90e0ce09732"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "5585f3b02e0f"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "attrs": {
+                "localId": "0eaef228c3de"
+              },
+              "content": [
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "fae0cbacd22d",
+                    "colwidth": [
+                      224
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "ความมั่นคงปลอดภัย"
+                        },
+                        {
+                          "type": "hardBreak"
+                        },
+                        {
+                          "type": "text",
+                          "text": "(มาตรา ๒๖ (มาตรการเสริม))"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "489e363a253e"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "2157a236017b",
+                    "colwidth": [
+                      297
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Log ที่เก็บไว้มีการควบคุมไม่ให้มีการแก้ไข (Integrity) หรือถูกลบทำลายก่อนกำหนดหรือไม่?"
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "5e457a91caad"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "11ba7a7815fa",
+                    "colwidth": [
+                      109
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "status",
+                          "attrs": {
+                            "text": "ผ่าน",
+                            "color": "green",
+                            "localId": "f0344f53-50ed-4572-b7a4-8de6a3d5f3ea",
+                            "style": ""
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "text": "  "
+                        }
+                      ],
+                      "marks": [
+                        {
+                          "type": "alignment",
+                          "attrs": {
+                            "align": "center"
+                          }
+                        }
+                      ],
+                      "attrs": {
+                        "localId": "90ce604ce1fe"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "attrs": {
+                    "localId": "dd6f48476aa6",
+                    "colwidth": [
+                      263
+                    ]
+                  },
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "attrs": {
+                        "localId": "903f0fa2c2f7"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "timetracking": {},
+    "customfield_10015": null,
+    "security": null,
+    "attachment": [],
+    "aggregatetimeestimate": null,
+    "summary": "2026 CCA Gap Analysis",
+    "creator": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+      "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+      },
+      "displayName": "UIN CMP",
+      "active": true,
+      "timeZone": "Asia/Bangkok",
+      "accountType": "atlassian"
+    },
+    "subtasks": [],
+    "customfield_10482": null,
+    "reporter": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/user?accountId=712020%3A091cacae-6a5e-43fb-9c51-803ec955c37a",
+      "accountId": "712020:091cacae-6a5e-43fb-9c51-803ec955c37a",
+      "avatarUrls": {
+        "48x48": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "24x24": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "16x16": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png",
+        "32x32": "https://secure.gravatar.com/avatar/cd85cd7d815121f0fe130bcd3a532520?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FUC-6.png"
+      },
+      "displayName": "UIN CMP",
+      "active": true,
+      "timeZone": "Asia/Bangkok",
+      "accountType": "atlassian"
+    },
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_10001": null,
+    "environment": null,
+    "duedate": null,
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "votes": {
+      "self": "https://uin-gc.atlassian.net/rest/api/3/issue/RLGA-1/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "comment": {
+      "comments": [],
+      "self": "https://uin-gc.atlassian.net/rest/api/3/issue/25171/comment",
+      "maxResults": 0,
+      "total": 0,
+      "startAt": 0
+    },
+    "customfield_11809": null,
+    "customfield_11808": 1,
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 20,
+      "total": 0,
+      "worklogs": []
+    }
+  }
+}

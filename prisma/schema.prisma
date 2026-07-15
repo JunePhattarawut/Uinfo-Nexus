@@ -1,0 +1,595 @@
+// Full data model per HANDOFF.md §4.
+// Conventions: uuid v7 ids (D4), workspace_id on every tenant-owned table (D5),
+// fractional-indexing string `rank` for ordering (D8), Tiptap JSON in jsonb (D6),
+// soft delete (deletedAt) on Issue and Page only.
+
+generator client {
+  provider        = "prisma-client-js"
+  // Engine-free client (WASM query compiler) + pg driver adapter.
+  // Decision D17: no native engine binary — smaller deploys, proxy-friendly installs.
+  previewFeatures = ["queryCompiler", "driverAdapters"]
+  engineType      = "client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- enums ----------
+
+enum WorkspaceRole {
+  OWNER
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+enum ProjectRole {
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+enum StatusCategory {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum SprintState {
+  FUTURE
+  ACTIVE
+  CLOSED
+}
+
+enum IssueType {
+  EPIC
+  STORY
+  TASK
+  BUG
+  SUBTASK
+}
+
+enum IssuePriority {
+  HIGHEST
+  HIGH
+  MEDIUM
+  LOW
+  LOWEST
+}
+
+enum IssueLinkType {
+  BLOCKS
+  RELATES
+  DUPLICATES
+  CLONES
+  DEPENDS_ON
+  CAUSES
+}
+
+enum ImportSourceType {
+  JIRA
+  CONFLUENCE
+  ATLASSIAN
+}
+
+enum ImportJobStatus {
+  DRAFT
+  DRY_RUN
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+// ---------- identity & tenancy ----------
+
+model User {
+  id           String   @id @default(uuid(7))
+  email        String   @unique
+  name         String
+  passwordHash String
+  avatarUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  memberships    Membership[]
+  assignedIssues Issue[]      @relation("IssueAssignee")
+  reportedIssues Issue[]      @relation("IssueReporter")
+  comments       Comment[]
+
+  @@map("users")
+}
+
+model Workspace {
+  id        String   @id @default(uuid(7))
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  memberships   Membership[]
+  projects      Project[]
+  spaces        Space[]
+  issues        Issue[]
+  pages         Page[]
+  labels        Label[]
+  notifications    Notification[]
+  activityLogs     ActivityLog[]
+  attachments      Attachment[]
+  savedFilters     SavedFilter[]
+  webhookEndpoints WebhookEndpoint[]
+  automationRules  AutomationRule[]
+  importJobs       ImportJob[]
+  externalMappings ExternalMapping[]
+
+  @@map("workspaces")
+}
+
+model Membership {
+  id          String        @id @default(uuid(7))
+  userId      String
+  workspaceId String
+  role        WorkspaceRole @default(MEMBER)
+  createdAt   DateTime      @default(now())
+
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, workspaceId])
+  @@index([workspaceId])
+  @@map("memberships")
+}
+
+// ---------- jira side ----------
+
+model Project {
+  id           String  @id @default(uuid(7))
+  workspaceId  String
+  key          String // short code, e.g. "DEMO" -> issues display as DEMO-12
+  name         String
+  description  String?
+  metadata     Json    @default("{}")
+  issueCounter Int     @default(0) // D9: incremented transactionally for issue numbers
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspace Workspace       @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  members   ProjectMember[]
+  statuses  Status[]
+  sprints   Sprint[]
+  issues    Issue[]
+  savedFilters SavedFilter[]
+
+  @@unique([workspaceId, key])
+  @@index([workspaceId])
+  @@map("projects")
+}
+
+model ProjectMember {
+  id        String      @id @default(uuid(7))
+  projectId String
+  userId    String
+  role      ProjectRole @default(MEMBER)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@map("project_members")
+}
+
+model Status {
+  id        String         @id @default(uuid(7))
+  projectId String
+  name      String
+  category  StatusCategory
+  position  Int
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  issues  Issue[]
+
+  @@index([projectId])
+  @@map("statuses")
+}
+
+model Sprint {
+  id        String      @id @default(uuid(7))
+  projectId String
+  name      String
+  goal      String?
+  startDate DateTime?
+  endDate   DateTime?
+  state     SprintState @default(FUTURE)
+  createdAt DateTime    @default(now())
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  issues  Issue[]
+
+  @@index([projectId])
+  @@map("sprints")
+}
+
+model Issue {
+  id          String        @id @default(uuid(7))
+  workspaceId String
+  projectId   String
+  number      Int // per-project sequence; display key = `${project.key}-${number}`
+  type        IssueType     @default(TASK)
+  title       String
+  description Json? // Tiptap JSON (D6)
+  statusId    String
+  priority    IssuePriority @default(MEDIUM)
+  assigneeId  String?
+  reporterId  String
+  sprintId    String?
+  parentId    String?
+  storyPoints Int?
+  dueDate     DateTime?
+  rank        String // fractional index (D8)
+  editorV     Int           @default(1) // Tiptap content schema version (HANDOFF §7)
+  customFields Json         @default("{}")
+  deletedAt   DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  status    Status    @relation(fields: [statusId], references: [id])
+  sprint    Sprint?   @relation(fields: [sprintId], references: [id], onDelete: SetNull)
+  parent    Issue?    @relation("IssueHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children  Issue[]   @relation("IssueHierarchy")
+  assignee  User?     @relation("IssueAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+  reporter  User      @relation("IssueReporter", fields: [reporterId], references: [id])
+
+  comments    Comment[]
+  labels      IssueLabel[]
+  pageLinks   IssuePageLink[]
+  linksFrom   IssueLink[]     @relation("LinkSource")
+  linksTo     IssueLink[]     @relation("LinkTarget")
+  attachments Attachment[]
+
+  @@unique([projectId, number])
+  @@index([workspaceId])
+  @@index([projectId, rank])
+  @@index([statusId])
+  @@index([sprintId])
+  @@map("issues")
+}
+
+model IssueLink {
+  id            String        @id @default(uuid(7))
+  sourceIssueId String
+  targetIssueId String
+  linkType      IssueLinkType
+
+  source Issue @relation("LinkSource", fields: [sourceIssueId], references: [id], onDelete: Cascade)
+  target Issue @relation("LinkTarget", fields: [targetIssueId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceIssueId, targetIssueId, linkType])
+  @@map("issue_links")
+}
+
+model Comment {
+  id        String   @id @default(uuid(7))
+  issueId   String?
+  pageId    String?
+  authorId  String
+  body      Json // Tiptap JSON (D6)
+  editorV   Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  issue  Issue? @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  page   Page?  @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  author User   @relation(fields: [authorId], references: [id])
+
+  @@index([issueId])
+  @@index([pageId])
+  @@map("comments")
+}
+
+// ---------- confluence side ----------
+
+model Space {
+  id          String  @id @default(uuid(7))
+  workspaceId String
+  key         String
+  name        String
+  description String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  pages     Page[]
+
+  @@unique([workspaceId, key])
+  @@index([workspaceId])
+  @@map("spaces")
+}
+
+model Page {
+  id          String    @id @default(uuid(7))
+  workspaceId String
+  spaceId     String
+  parentId    String?
+  title       String
+  content     Json? // Tiptap JSON (D6)
+  editorV     Int       @default(1)
+  rank        String // sibling order within parent (D8)
+  createdBy   String
+  updatedBy   String
+  lockedBy    String? // edit lock (D13); stale after LOCK_TTL
+  lockedAt    DateTime?
+  deletedAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  space     Space     @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  parent    Page?     @relation("PageTree", fields: [parentId], references: [id], onDelete: SetNull)
+  children  Page[]    @relation("PageTree")
+
+  versions    PageVersion[]
+  comments    Comment[]
+  issueLinks  IssuePageLink[]
+  labels      PageLabel[]
+  attachments Attachment[]
+
+  @@index([workspaceId])
+  @@index([spaceId, parentId, rank])
+  @@map("pages")
+}
+
+model PageVersion {
+  id        String   @id @default(uuid(7))
+  pageId    String
+  version   Int
+  title     String
+  content   Json
+  editorV   Int      @default(1)
+  authorId  String
+  createdAt DateTime @default(now())
+
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@unique([pageId, version])
+  @@map("page_versions")
+}
+
+model IssuePageLink {
+  id      String @id @default(uuid(7))
+  issueId String
+  pageId  String
+
+  issue Issue @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  page  Page  @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@unique([issueId, pageId])
+  @@map("issue_page_links")
+}
+
+// ---------- shared ----------
+
+model Attachment {
+  id          String  @id @default(uuid(7))
+  workspaceId String
+  issueId     String?
+  pageId      String?
+  filename    String
+  mimeType    String
+  size        Int
+  storageKey  String // object storage key (D11)
+
+  createdAt DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  issue     Issue?    @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  page      Page?     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@map("attachments")
+}
+
+model ActivityLog {
+  id          String   @id @default(uuid(7))
+  workspaceId String
+  actorId     String
+  entityType  String // "issue" | "page" | "project" | "workspace" | ...
+  entityId    String
+  action      String // "created" | "updated" | "status_changed" | "commented" | ...
+  payload     Json     @default("{}")
+  createdAt   DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  // Append-only. Partition by month when volume demands it (HANDOFF §8).
+  @@index([workspaceId, createdAt])
+  @@index([entityType, entityId])
+  @@map("activity_logs")
+}
+
+model Notification {
+  id          String    @id @default(uuid(7))
+  workspaceId String
+  userId      String
+  type        String // "assigned" | "mentioned" | "commented" | ...
+  payload     Json      @default("{}")
+  readAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt])
+  @@index([workspaceId])
+  @@map("notifications")
+}
+
+model SavedFilter {
+  id          String   @id @default(uuid(7))
+  workspaceId String
+  projectId   String?
+  ownerId     String
+  name        String
+  scope       String   @default("PRIVATE") // PRIVATE | WORKSPACE
+  filters     Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@index([ownerId])
+  @@map("saved_filters")
+}
+
+model WebhookEndpoint {
+  id          String    @id @default(uuid(7))
+  workspaceId String
+  name        String
+  url         String
+  events      String[]
+  secret      String?
+  enabled     Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  deliveries WebhookDelivery[]
+
+  @@index([workspaceId])
+  @@map("webhook_endpoints")
+}
+
+model WebhookDelivery {
+  id          String   @id @default(uuid(7))
+  webhookId   String
+  event       String
+  payload     Json     @default("{}")
+  status      String   @default("PENDING")
+  response    String?
+  attempts    Int      @default(0)
+  createdAt   DateTime @default(now())
+  deliveredAt DateTime?
+
+  webhook WebhookEndpoint @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@map("webhook_deliveries")
+}
+
+model AutomationRule {
+  id          String   @id @default(uuid(7))
+  workspaceId String
+  name        String
+  trigger     String
+  action      String
+  enabled     Boolean  @default(true)
+  config      Json     @default("{}")
+  createdAt   DateTime @default(now())
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@index([workspaceId])
+  @@map("automation_rules")
+}
+
+model ImportJob {
+  id          String          @id @default(uuid(7))
+  workspaceId String
+  source      ImportSourceType @default(JIRA)
+  sourceUrl   String
+  name        String
+  status      ImportJobStatus @default(DRAFT)
+  dryRun      Boolean         @default(true)
+  config      Json            @default("{}")
+  summary     Json            @default("{}")
+  startedAt   DateTime?
+  finishedAt  DateTime?
+  createdBy   String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  workspace Workspace     @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  errors    ImportError[]
+
+  @@index([workspaceId, createdAt])
+  @@index([status])
+  @@map("import_jobs")
+}
+
+model ImportError {
+  id        String   @id @default(uuid(7))
+  jobId     String
+  sourceKey String?
+  entity    String
+  message   String
+  payload   Json     @default("{}")
+  createdAt DateTime @default(now())
+
+  job ImportJob @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@index([jobId])
+  @@map("import_errors")
+}
+
+model ExternalMapping {
+  id          String          @id @default(uuid(7))
+  workspaceId String
+  source      ImportSourceType @default(JIRA)
+  entityType  String
+  sourceId    String
+  sourceKey   String?
+  localType   String
+  localId     String
+  sourceUrl   String?
+  metadata    Json            @default("{}")
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, source, entityType, sourceId])
+  @@index([workspaceId, localType, localId])
+  @@index([sourceKey])
+  @@map("external_mappings")
+}
+
+model Label {
+  id          String @id @default(uuid(7))
+  workspaceId String
+  name        String
+  color       String @default("#6B7280")
+
+  workspace Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  issues    IssueLabel[]
+  pages     PageLabel[]
+
+  @@unique([workspaceId, name])
+  @@map("labels")
+}
+
+model IssueLabel {
+  issueId String
+  labelId String
+
+  issue Issue @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  label Label @relation(fields: [labelId], references: [id], onDelete: Cascade)
+
+  @@id([issueId, labelId])
+  @@map("issue_labels")
+}
+
+model PageLabel {
+  pageId  String
+  labelId String
+
+  page  Page  @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  label Label @relation(fields: [labelId], references: [id], onDelete: Cascade)
+
+  @@id([pageId, labelId])
+  @@map("page_labels")
+}

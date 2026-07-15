@@ -1,0 +1,501 @@
+{
+  "site": "https://uin-gc.atlassian.net",
+  "perProjectLimit": 10,
+  "orderBy": "updated DESC",
+  "projectCount": 20,
+  "importedProjects": 18,
+  "skippedEmptyProjects": 2,
+  "failedProjects": 0,
+  "totalFetched": 172,
+  "totalImported": 172,
+  "results": [
+    {
+      "key": "UCR",
+      "name": "Compliance Review",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-a625-707e-88cf-1ec83bec99f1",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "UCR-199",
+        "UCR-200",
+        "UCR-197",
+        "UCR-196",
+        "UCR-198",
+        "UCR-186",
+        "UCR-166",
+        "UCR-187",
+        "UCR-168",
+        "UCR-179"
+      ]
+    },
+    {
+      "key": "CTR",
+      "name": "Contract Review",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-a7ee-74ed-82de-67b28ebcc488",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "CTR-402",
+        "CTR-384",
+        "CTR-401",
+        "CTR-400",
+        "CTR-283",
+        "CTR-399",
+        "CTR-398",
+        "CTR-396",
+        "CTR-397",
+        "CTR-380"
+      ]
+    },
+    {
+      "key": "CPAR",
+      "name": "Corrective and Preventive Actions Request",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-a99b-77e4-a634-994337578fe8",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "CPAR-285",
+        "CPAR-284",
+        "CPAR-283",
+        "CPAR-58",
+        "CPAR-59",
+        "CPAR-279",
+        "CPAR-282",
+        "CPAR-281",
+        "CPAR-280",
+        "CPAR-278"
+      ]
+    },
+    {
+      "key": "CTI",
+      "name": "Cyber Threat Intelligence",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-ab61-722d-94f6-68623d9a7173",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "CTI-1628",
+        "CTI-1627",
+        "CTI-1626",
+        "CTI-1625",
+        "CTI-1624",
+        "CTI-1623",
+        "CTI-1622",
+        "CTI-1621",
+        "CTI-1620",
+        "CTI-1619"
+      ]
+    },
+    {
+      "key": "DAR",
+      "name": "Document Action Request",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-b0c2-70bf-95db-957409f567d7",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "DAR-40",
+        "DAR-41",
+        "DAR-42",
+        "DAR-39",
+        "DAR-35",
+        "DAR-37",
+        "DAR-36",
+        "DAR-30",
+        "DAR-3",
+        "DAR-22"
+      ]
+    },
+    {
+      "key": "UDC",
+      "name": "Document Control",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-b2be-776d-ac3a-e63d89c49d23",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "UDC-262",
+        "UDC-261",
+        "UDC-260",
+        "UDC-259",
+        "UDC-258",
+        "UDC-187",
+        "UDC-189",
+        "UDC-257",
+        "UDC-196",
+        "UDC-256"
+      ]
+    },
+    {
+      "key": "GSR",
+      "name": "GC Service Request",
+      "fetched": 0,
+      "imported": 0,
+      "status": "SKIPPED_EMPTY",
+      "issueKeys": []
+    },
+    {
+      "key": "GWM",
+      "name": "GC Work Management",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-b527-728b-a774-8300aff4faad",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "GWM-106",
+        "GWM-105",
+        "GWM-103",
+        "GWM-96",
+        "GWM-98",
+        "GWM-97",
+        "GWM-94",
+        "GWM-93",
+        "GWM-95",
+        "GWM-107"
+      ]
+    },
+    {
+      "key": "IN",
+      "name": "Insurance",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-b728-73f6-acd4-e487fc160a67",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "IN-13",
+        "IN-21",
+        "IN-20",
+        "IN-19",
+        "IN-12",
+        "IN-11",
+        "IN-18",
+        "IN-10",
+        "IN-17",
+        "IN-6"
+      ]
+    },
+    {
+      "key": "UIA",
+      "name": "Internal Audit",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-b8fb-72fe-8884-27d64d83fe74",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "UIA-225",
+        "UIA-221",
+        "UIA-218",
+        "UIA-213",
+        "UIA-230",
+        "UIA-197",
+        "UIA-199",
+        "UIA-200",
+        "UIA-229",
+        "UIA-228"
+      ]
+    },
+    {
+      "key": "MA",
+      "name": "Management Approval",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-ba94-76e5-9324-3a0b01c7e2e9",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "MA-29",
+        "MA-28",
+        "MA-27",
+        "MA-26",
+        "MA-25",
+        "MA-24",
+        "MA-23",
+        "MA-15",
+        "MA-22",
+        "MA-21"
+      ]
+    },
+    {
+      "key": "OM",
+      "name": "Objective Measurement",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-bc63-729d-886b-c918202b66a2",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "OM-1",
+        "OM-2",
+        "OM-3",
+        "OM-4",
+        "OM-5",
+        "OM-6",
+        "OM-7",
+        "OM-8",
+        "OM-9",
+        "OM-10"
+      ]
+    },
+    {
+      "key": "RLGA",
+      "name": "Regulatory and Law Gap Analysis",
+      "fetched": 4,
+      "imported": 4,
+      "jobId": "019f523f-be10-735b-bacb-aac10547cd21",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "RLGA-1",
+        "RLGA-2",
+        "RLGA-4",
+        "RLGA-3"
+      ]
+    },
+    {
+      "key": "RLR",
+      "name": "Regulatory and Law Review",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-bfd9-746c-a10b-c8999706d683",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "RLR-2",
+        "RLR-23",
+        "RLR-600",
+        "RLR-618",
+        "RLR-278",
+        "RLR-617",
+        "RLR-608",
+        "RLR-607",
+        "RLR-609",
+        "RLR-576"
+      ]
+    },
+    {
+      "key": "RA",
+      "name": "Risk Assessment",
+      "fetched": 8,
+      "imported": 8,
+      "jobId": "019f523f-c1e5-7657-91c9-f51dc4d63b87",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "RA-8",
+        "RA-3",
+        "RA-4",
+        "RA-5",
+        "RA-6",
+        "RA-7",
+        "RA-2",
+        "RA-1"
+      ]
+    },
+    {
+      "key": "RAS",
+      "name": "Risk Assessment Sheet",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-c372-77fa-a920-901c6046049d",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "RAS-1",
+        "RAS-2",
+        "RAS-3",
+        "RAS-4",
+        "RAS-7",
+        "RAS-8",
+        "RAS-9",
+        "RAS-10",
+        "RAS-11",
+        "RAS-12"
+      ]
+    },
+    {
+      "key": "RTP",
+      "name": "Risk Treatment Plan",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-c521-72dd-872a-68442355c3cf",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "RTP-1",
+        "RTP-2",
+        "RTP-4",
+        "RTP-3",
+        "RTP-6",
+        "RTP-22",
+        "RTP-7",
+        "RTP-5",
+        "RTP-15",
+        "RTP-16"
+      ]
+    },
+    {
+      "key": "TPM",
+      "name": "Third Party Management",
+      "fetched": 0,
+      "imported": 0,
+      "status": "SKIPPED_EMPTY",
+      "issueKeys": []
+    },
+    {
+      "key": "TPRM",
+      "name": "Third Party Risk Management",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-c76b-769a-b935-99b9dd99933e",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "TPRM-11",
+        "TPRM-1",
+        "TPRM-10",
+        "TPRM-3",
+        "TPRM-2",
+        "TPRM-8",
+        "TPRM-9",
+        "TPRM-7",
+        "TPRM-5",
+        "TPRM-6"
+      ]
+    },
+    {
+      "key": "TPRR",
+      "name": "Third Party Risk Report",
+      "fetched": 10,
+      "imported": 10,
+      "jobId": "019f523f-c930-75ed-bf9c-2b565704dbe4",
+      "status": "COMPLETED",
+      "errors": 0,
+      "issueKeys": [
+        "TPRR-6",
+        "TPRR-7",
+        "TPRR-8",
+        "TPRR-9",
+        "TPRR-10",
+        "TPRR-11",
+        "TPRR-12",
+        "TPRR-13",
+        "TPRR-14",
+        "TPRR-15"
+      ]
+    }
+  ],
+  "localCounts": [
+    {
+      "key": "UCR",
+      "name": "Compliance Review",
+      "issues": 10
+    },
+    {
+      "key": "CTR",
+      "name": "Contract Review",
+      "issues": 10
+    },
+    {
+      "key": "CPAR",
+      "name": "Corrective and Preventive Actions Request",
+      "issues": 10
+    },
+    {
+      "key": "CTI",
+      "name": "Cyber Threat Intelligence",
+      "issues": 10
+    },
+    {
+      "key": "DAR",
+      "name": "Document Action Request",
+      "issues": 10
+    },
+    {
+      "key": "UDC",
+      "name": "Document Control",
+      "issues": 10
+    },
+    {
+      "key": "GSR",
+      "name": "GC Service Request",
+      "issues": 0
+    },
+    {
+      "key": "GWM",
+      "name": "GC Work Management",
+      "issues": 10
+    },
+    {
+      "key": "IN",
+      "name": "Insurance",
+      "issues": 10
+    },
+    {
+      "key": "UIA",
+      "name": "Internal Audit",
+      "issues": 10
+    },
+    {
+      "key": "MA",
+      "name": "Management Approval",
+      "issues": 10
+    },
+    {
+      "key": "OM",
+      "name": "Objective Measurement",
+      "issues": 10
+    },
+    {
+      "key": "RLGA",
+      "name": "Regulatory and Law Gap Analysis",
+      "issues": 4
+    },
+    {
+      "key": "RLR",
+      "name": "Regulatory and Law Review",
+      "issues": 10
+    },
+    {
+      "key": "RA",
+      "name": "Risk Assessment",
+      "issues": 8
+    },
+    {
+      "key": "RAS",
+      "name": "Risk Assessment Sheet",
+      "issues": 10
+    },
+    {
+      "key": "RTP",
+      "name": "Risk Treatment Plan",
+      "issues": 10
+    },
+    {
+      "key": "TPM",
+      "name": "Third Party Management",
+      "issues": 0
+    },
+    {
+      "key": "TPRM",
+      "name": "Third Party Risk Management",
+      "issues": 10
+    },
+    {
+      "key": "TPRR",
+      "name": "Third Party Risk Report",
+      "issues": 10
+    }
+  ]
+}

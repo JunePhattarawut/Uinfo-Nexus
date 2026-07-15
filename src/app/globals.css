@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/*
+ * Uinfo Nexus design tokens — navy variant (final).
+ * Source: /Users/phattarawutsakonsaringkarn/Downloads/design_handoff_uinfo_nexus_redesign/README.md
+ */
+@theme {
+  --color-sidebar: #0f2044;
+  --color-sidebar-border: rgba(255, 255, 255, 0.1);
+  --color-sidebar-text: #e7ecf7;
+  --color-sidebar-muted: #93a3c8;
+  --color-sidebar-active: rgba(255, 255, 255, 0.1);
+  --color-sidebar-tray: rgba(255, 255, 255, 0.04);
+
+  --color-accent: #3357d6;
+  --color-accent-soft: #eef1fc;
+  --color-accent-soft-text: #28419e;
+
+  --color-page: #f6f7fa;
+  --color-card: #ffffff;
+  --color-card-border: #e3e7ef;
+
+  --color-ink: #12172b;
+  --color-ink-secondary: #5b6478;
+
+  --color-priority-high: #fbe7e6;
+  --color-priority-high-text: #a3312a;
+  --color-priority-med: #fdf1de;
+  --color-priority-med-text: #95611a;
+
+  --font-heading: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+  --font-body: var(--font-plex), "IBM Plex Sans", sans-serif;
+}
+
+:root {
+  --wh-accent: #3357d6;
+  --wh-accent-strong: #28419e;
+  --wh-ink: #12172b;
+  --wh-sidebar: #0f2044;
+  --wh-surface: #f6f7fa;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.wh-sidebar {
+  transition: width 160ms ease;
+}
+
+.wh-sidebar-text {
+  transition: opacity 120ms ease;
+}
+
+.wh-sidebar-collapsed .wh-sidebar {
+  width: 76px;
+}
+
+.wh-sidebar-collapsed .wh-sidebar-text {
+  display: none !important;
+}
+
+.wh-sidebar-collapsed .wh-sidebar > div:first-child {
+  justify-content: center;
+  gap: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.wh-sidebar-collapsed .wh-sidebar nav {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.wh-sidebar-collapsed .wh-sidebar a,
+.wh-sidebar-collapsed .wh-sidebar button {
+  justify-content: center;
+}
+
+.wh-sidebar-collapsed .wh-sidebar nav a {
+  min-height: 44px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.wh-sidebar-collapsed .wh-sidebar nav a > span:first-child,
+.wh-sidebar-collapsed .wh-sidebar nav a > span:first-child span {
+  margin: 0;
+}
+
+.wh-sidebar-collapsed .wh-sidebar .ml-auto {
+  margin-left: 0;
+}
+
+/* Hidden when collapsed, visible when expanded (inverse of wh-sidebar-text) */
+.wh-sidebar-show-collapsed {
+  display: none;
+}
+.wh-sidebar-collapsed .wh-sidebar .wh-sidebar-show-collapsed {
+  display: inline;
+}
+
+.wh-sidebar-collapsed .wh-sidebar p,
+.wh-sidebar-collapsed .wh-sidebar form,
+.wh-sidebar-collapsed .wh-sidebar .wh-collapse-hide,
+.wh-sidebar-collapsed .wh-sidebar .wh-footer-copy {
+  display: none !important;
+}
+
+.wh-sidebar-collapsed .wh-sidebar > div:last-child {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.wh-sidebar-collapsed .wh-sidebar > div:last-child > div {
+  justify-content: center;
+}
+
+/* ── Welcome / loading-screen animations ────────────────────────────── */
+@keyframes uinfo-draw {
+  from { stroke-dashoffset: 230; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes uinfo-fade-scale {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes uinfo-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes uinfo-pulse-dot {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+  40%            { opacity: 1;   transform: scale(1); }
+}
