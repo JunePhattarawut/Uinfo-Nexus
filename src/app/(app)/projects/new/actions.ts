@@ -3,10 +3,8 @@
 import { StatusCategory } from "@prisma/client";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { requireUser } from "@/lib/auth";
-import { getActiveWorkspace } from "@/lib/active-workspace";
+import { actionGuard } from "@/lib/rbac";
 import { prisma } from "@/lib/db";
-import { requireMembership } from "@/lib/tenancy";
 
 const projectTemplateSchema = z.enum(["kanban", "scrum", "task", "bug", "imported"]);
 const projectIconSchema = z.enum(["▦", "🛡️", "📋", "⚙️", "🚀", "📘"]);
@@ -70,10 +68,8 @@ function formString(formData: FormData, key: string) {
 }
 
 export async function createProjectAction(formData: FormData) {
-  const user = await requireUser();
-  const { active } = await getActiveWorkspace(user.id);
-  if (!active) throw new Error("No active workspace");
-  await requireMembership(user.id, active.id, "MEMBER");
+  const ctx = await actionGuard("project:create");
+  if (!ctx) return;
 
   const input = createProjectSchema.parse({
     key: formString(formData, "key").toUpperCase(),
@@ -81,7 +77,7 @@ export async function createProjectAction(formData: FormData) {
     description: formString(formData, "description"),
     template: formString(formData, "template") || "kanban",
     access: formString(formData, "access") || "open",
-    leadId: formString(formData, "leadId") || user.id,
+    leadId: formString(formData, "leadId") || ctx.user.id,
     icon: formString(formData, "icon") || "▦",
     theme: formString(formData, "theme") || "nexus",
   });
@@ -89,12 +85,12 @@ export async function createProjectAction(formData: FormData) {
   const project = await prisma.$transaction(async (tx) => {
     const created = await tx.project.create({
       data: {
-        workspaceId: active.id,
+        workspaceId: ctx.workspace.id,
         key: input.key,
         name: input.name,
         description: input.description || null,
         metadata: { icon: input.icon, theme: input.theme, coverColor: COVER_BY_THEME[input.theme] },
-        members: input.access === "private" ? { create: { userId: input.leadId ?? user.id, role: "ADMIN" } } : undefined,
+        members: input.access === "private" ? { create: { userId: input.leadId ?? ctx.user.id, role: "ADMIN" } } : undefined,
       },
     });
 
@@ -109,8 +105,8 @@ export async function createProjectAction(formData: FormData) {
 
     await tx.activityLog.create({
       data: {
-        workspaceId: active.id,
-        actorId: user.id,
+        workspaceId: ctx.workspace.id,
+        actorId: ctx.user.id,
         entityType: "project",
         entityId: created.id,
         action: "created",

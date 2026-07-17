@@ -1,16 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { requireUser } from "@/lib/auth";
-import { getActiveWorkspace } from "@/lib/active-workspace";
+import { actionGuard } from "@/lib/rbac";
 import * as adv from "@/modules/advanced/service";
 import { automationSchema, statusSchema, webhookSchema } from "@/modules/advanced/schemas";
 
 async function ctx() {
-  const user = await requireUser();
-  const { active } = await getActiveWorkspace(user.id);
-  if (!active) throw new Error("No active workspace");
-  return { user, workspaceId: active.id };
+  const rbac = await actionGuard("admin:access");
+  if (!rbac) return null;
+  return { user: rbac.user, workspaceId: rbac.workspace.id };
 }
 
 function statusInput(formData: FormData) {
@@ -18,20 +16,23 @@ function statusInput(formData: FormData) {
 }
 
 export async function createStatusAction(formData: FormData) {
-  const { user, workspaceId } = await ctx();
-  await adv.createStatus(user.id, workspaceId, String(formData.get("projectId") || ""), statusInput(formData));
+  const c = await ctx();
+  if (!c) return;
+  await adv.createStatus(c.user.id, c.workspaceId, String(formData.get("projectId") || ""), statusInput(formData));
   revalidatePath("/admin/advanced");
 }
 
 export async function updateStatusAction(formData: FormData) {
-  const { user, workspaceId } = await ctx();
-  await adv.updateStatus(user.id, workspaceId, String(formData.get("projectId") || ""), String(formData.get("statusId") || ""), statusInput(formData));
+  const c = await ctx();
+  if (!c) return;
+  await adv.updateStatus(c.user.id, c.workspaceId, String(formData.get("projectId") || ""), String(formData.get("statusId") || ""), statusInput(formData));
   revalidatePath("/admin/advanced");
 }
 
 export async function createWebhookAction(formData: FormData) {
-  const { user, workspaceId } = await ctx();
-  await adv.createWebhook(user.id, workspaceId, webhookSchema.parse({
+  const c = await ctx();
+  if (!c) return;
+  await adv.createWebhook(c.user.id, c.workspaceId, webhookSchema.parse({
     name: String(formData.get("name") || ""),
     url: String(formData.get("url") || ""),
     events: String(formData.get("events") || "issue.updated").split(",").map((s) => s.trim()).filter(Boolean),
@@ -41,19 +42,22 @@ export async function createWebhookAction(formData: FormData) {
 }
 
 export async function createAutomationAction(formData: FormData) {
-  const { user, workspaceId } = await ctx();
-  await adv.createAutomation(user.id, workspaceId, automationSchema.parse({ name: String(formData.get("name") || ""), trigger: "issue.status.done", action: "notify.reporter", enabled: true }));
+  const c = await ctx();
+  if (!c) return;
+  await adv.createAutomation(c.user.id, c.workspaceId, automationSchema.parse({ name: String(formData.get("name") || ""), trigger: "issue.status.done", action: "notify.reporter", enabled: true }));
   revalidatePath("/admin/advanced");
 }
 
 export async function deliverPendingWebhooksAction() {
-  const { user, workspaceId } = await ctx();
-  await adv.deliverPendingWebhooks(user.id, workspaceId);
+  const c = await ctx();
+  if (!c) return;
+  await adv.deliverPendingWebhooks(c.user.id, c.workspaceId);
   revalidatePath("/admin/advanced");
 }
 
 export async function rebuildSearchIndexAction() {
-  const { user, workspaceId } = await ctx();
-  await adv.rebuildSearchIndex(user.id, workspaceId);
+  const c = await ctx();
+  if (!c) return;
+  await adv.rebuildSearchIndex(c.user.id, c.workspaceId);
   revalidatePath("/admin/advanced");
 }

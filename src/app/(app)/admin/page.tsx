@@ -102,6 +102,7 @@ export default async function AdminPage() {
 
         <aside className="space-y-3 rounded-2xl border border-card-border bg-card p-4 shadow-sm">
           <h2 className="font-heading text-lg font-extrabold text-ink">Admin next steps</h2>
+          <Link href="/admin/users" className="block rounded-xl border border-accent/30 bg-accent/5 p-3 text-sm font-bold text-accent hover:bg-accent/10">👥 Manage all users</Link>
           <Link href="/admin/migration" className="block rounded-xl border border-card-border bg-page p-3 text-sm font-bold text-ink hover:border-accent/40">Open migration wizard</Link>
           <Link href="/admin/advanced" className="block rounded-xl border border-card-border bg-page p-3 text-sm font-bold text-ink hover:border-accent/40">Manage search/webhooks/automation</Link>
           <Link href="/search" className="block rounded-xl border border-card-border bg-page p-3 text-sm font-bold text-ink hover:border-accent/40">Validate search results</Link>

@@ -42,7 +42,10 @@ export default async function SpacePage({ params }: { params: Promise<{ spaceKey
         <div className="grid gap-5 bg-[linear-gradient(135deg,#eef1fc,#ffffff_55%,#f7faf7)] p-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div>
             <p className="text-[12px] font-extrabold uppercase tracking-wide text-accent">Uinfo Codex · Space overview</p>
-            <h1 className="mt-2 font-heading text-[34px] font-extrabold tracking-tight text-ink">{space.name}</h1>
+            <h1 className="mt-2 flex items-center gap-3 font-heading text-[34px] font-extrabold tracking-tight text-ink">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent/8 text-3xl">{space.iconEmoji}</span>
+              {space.name}
+            </h1>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-ink-secondary">{space.description || "Confluence-like knowledge space for team pages, linked Nexus work, files, comments, and versioned documentation."}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               <Link href={`/search?q=${encodeURIComponent(space.key)}&type=page`} className="rounded-xl bg-accent px-4 py-2 text-sm font-extrabold text-white">Search this space</Link>

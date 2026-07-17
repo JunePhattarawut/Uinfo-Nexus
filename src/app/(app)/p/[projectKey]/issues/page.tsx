@@ -1,11 +1,27 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import {
+  CircleDot,
+  Kanban,
+  List,
+  CalendarDays,
+  GanttChart,
+  CheckCheck,
+  Plus,
+  BookOpen,
+  Paperclip,
+  TrendingUp,
+  Archive,
+  Command,
+} from "lucide-react";
 import { requireUser } from "@/lib/auth";
 import { getActiveWorkspace } from "@/lib/active-workspace";
 import { prisma } from "@/lib/db";
 import * as issueService from "@/modules/issue/service";
 import { createIssueAction } from "./actions";
 import { KanbanBoard } from "./KanbanBoard";
+import { CalendarView } from "./CalendarView";
+import { TimelineView } from "./TimelineView";
 
 const TYPES = ["EPIC", "STORY", "TASK", "BUG", "SUBTASK"] as const;
 const PRIORITIES = ["HIGHEST", "HIGH", "MEDIUM", "LOW", "LOWEST"] as const;
@@ -87,21 +103,23 @@ type IssueForView = {
   _count?: Partial<Record<"comments" | "attachments", number>> | null;
 };
 
-type ProjectSpaceView = { key: ViewKey; label: string; icon: string };
+type ProjectSpaceView = { key: ViewKey; label: string; icon: ReactNode };
 
+const S = 13;
+const SW = 1.75;
 const PROJECT_SPACE_VIEWS: ProjectSpaceView[] = [
-  { key: "summary", label: "Summary", icon: "◉" },
-  { key: "board", label: "Board", icon: "▥" },
-  { key: "list", label: "List", icon: "☷" },
-  { key: "calendar", label: "Calendar", icon: "▣" },
-  { key: "timeline", label: "Timeline", icon: "═" },
-  { key: "approvals", label: "Approvals", icon: "✓" },
-  { key: "forms", label: "Forms", icon: "+" },
-  { key: "docs", label: "Docs", icon: "📘" },
-  { key: "attachments", label: "Attachments", icon: "📎" },
-  { key: "reports", label: "Reports", icon: "↗" },
-  { key: "archived", label: "Archived", icon: "◌" },
-  { key: "shortcuts", label: "Shortcuts", icon: "⌘" },
+  { key: "summary",     label: "Summary",     icon: <CircleDot   size={S} strokeWidth={SW} /> },
+  { key: "board",       label: "Board",       icon: <Kanban      size={S} strokeWidth={SW} /> },
+  { key: "list",        label: "List",        icon: <List        size={S} strokeWidth={SW} /> },
+  { key: "calendar",    label: "Calendar",    icon: <CalendarDays size={S} strokeWidth={SW} /> },
+  { key: "timeline",    label: "Timeline",    icon: <GanttChart  size={S} strokeWidth={SW} /> },
+  { key: "approvals",   label: "Approvals",   icon: <CheckCheck  size={S} strokeWidth={SW} /> },
+  { key: "forms",       label: "Forms",       icon: <Plus        size={S} strokeWidth={SW} /> },
+  { key: "docs",        label: "Docs",        icon: <BookOpen    size={S} strokeWidth={SW} /> },
+  { key: "attachments", label: "Attachments", icon: <Paperclip   size={S} strokeWidth={SW} /> },
+  { key: "reports",     label: "Reports",     icon: <TrendingUp  size={S} strokeWidth={SW} /> },
+  { key: "archived",    label: "Archived",    icon: <Archive     size={S} strokeWidth={SW} /> },
+  { key: "shortcuts",   label: "Shortcuts",   icon: <Command     size={S} strokeWidth={SW} /> },
 ];
 
 function parseView(value: string | undefined): ViewKey {
@@ -203,9 +221,9 @@ function ProjectTabs({ projectKey, activeView }: { projectKey: string; activeVie
             <Link
               key={item.key}
               href={`/p/${projectKey}/issues?view=${item.key}`}
-              className={`flex items-center gap-2 rounded-t-xl border-b-2 px-3 py-3 text-[13px] font-bold transition ${active ? "border-accent bg-page text-accent" : "border-transparent text-ink-secondary hover:bg-page hover:text-ink"}`}
+              className={`flex items-center gap-1.5 rounded-t-xl border-b-2 px-3 py-3 text-[13px] font-semibold transition ${active ? "border-accent bg-page text-accent" : "border-transparent text-ink-secondary hover:bg-page hover:text-ink"}`}
             >
-              <span className="text-base">{item.icon}</span>
+              <span className="flex shrink-0 items-center">{item.icon}</span>
               {item.label}
             </Link>
           );
@@ -604,56 +622,6 @@ function SecondaryIssueCard({ project, issue }: { project: ProjectForView; issue
   );
 }
 
-function CalendarView({ project, issues }: { project: ProjectForView; issues: IssueForView[] }) {
-  const groups = new Map<string, IssueForView[]>();
-  for (const issue of issues) {
-    const key = issue.dueDate ? new Date(issue.dueDate).toISOString().slice(0, 10) : "No due date";
-    const list = groups.get(key) ?? [];
-    list.push(issue);
-    groups.set(key, list);
-  }
-  if (!issues.length) return <section className="rounded-2xl border border-card-border bg-card p-5 text-sm text-ink-secondary shadow-sm">No work items to show on the calendar.</section>;
-  return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-      {[...groups.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([day, list]) => (
-        <section key={day} className="rounded-2xl border border-card-border bg-card p-4 shadow-sm">
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="font-heading text-lg font-extrabold text-ink">{day === "No due date" ? day : dateLabel(day)}</h2>
-            <span className="rounded-full bg-page px-3 py-1 text-xs font-bold text-ink-secondary">{list.length}</span>
-          </div>
-          <ul className="mt-3 space-y-2">{list.map((issue) => <SecondaryIssueCard key={issue.id} issue={issue} project={project} />)}</ul>
-        </section>
-      ))}
-    </div>
-  );
-}
-
-function TimelineView({ project, issues }: { project: ProjectForView; issues: IssueForView[] }) {
-  const ordered = [...issues].sort((a, b) => +new Date(a.dueDate ?? a.updatedAt ?? 0) - +new Date(b.dueDate ?? b.updatedAt ?? 0));
-  return (
-    <section className="rounded-2xl border border-card-border bg-card p-5 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
-        <h2 className="font-heading text-lg font-extrabold text-ink">Timeline by due date</h2>
-        <span className="text-xs font-bold uppercase tracking-wide text-ink-secondary">{ordered.length} work items</span>
-      </div>
-      <div className="mt-4 space-y-3">
-        {ordered.map((issue) => (
-          <div key={issue.id} className="grid gap-3 md:grid-cols-[150px_1fr]">
-            <div className="rounded-xl border border-card-border bg-page px-3 py-2 text-sm font-bold text-ink-secondary">{dateLabel(issue.dueDate ?? issue.updatedAt)}</div>
-            <div className="rounded-xl border border-card-border bg-page p-3 text-sm">
-              <div className="flex flex-wrap items-center gap-2">
-                <WorkItemLink issue={issue} projectKey={project.key} />
-                <Link href={issueHref(project.key, issue)} className="font-semibold text-ink hover:text-accent">{issue.title}</Link>
-                <span className={`ml-auto rounded px-2 py-1 text-[11px] font-extrabold uppercase ${statusClass(issue.status)}`}>{statusName(issue)}</span>
-              </div>
-            </div>
-          </div>
-        ))}
-        {!issues.length && <p className="rounded-xl border border-dashed bg-page p-4 text-sm text-ink-secondary">No work items to show on the timeline.</p>}
-      </div>
-    </section>
-  );
-}
 
 function SimpleIssueList({ title, empty, project, issues }: { title: string; empty: string; project: ProjectForView; issues: IssueForView[] }) {
   return (
@@ -815,7 +783,7 @@ function findApprovalIssues(issues: IssueForView[]) {
   return issues.filter((issue) => APPROVAL_PATTERN.test([issue.title, statusName(issue), ...labelsOf(issue)].join(" ").toLowerCase()));
 }
 
-async function ProjectView({ view, activeWorkspaceId, project, issues, members, create, showJira }: {
+async function ProjectView({ view, activeWorkspaceId, project, issues, members, create, showJira, qs }: {
   view: ViewKey;
   activeWorkspaceId: string;
   project: ProjectForView;
@@ -823,6 +791,7 @@ async function ProjectView({ view, activeWorkspaceId, project, issues, members, 
   members: MemberForView[];
   create: (formData: FormData) => void | Promise<void>;
   showJira: boolean;
+  qs: SearchParams;
 }) {
   switch (view) {
     case "summary":
@@ -832,9 +801,9 @@ async function ProjectView({ view, activeWorkspaceId, project, issues, members, 
     case "list":
       return <ListView project={project} issues={issues} showJira={showJira} />;
     case "calendar":
-      return <CalendarView project={project} issues={issues} />;
+      return <CalendarView projectKey={project.key} issues={issues} monthParam={qs.month} />;
     case "timeline":
-      return <TimelineView project={project} issues={issues} />;
+      return <TimelineView projectKey={project.key} issues={issues} />;
     case "approvals":
       return <SimpleIssueList title="Approvals" empty="No approval/review work items found. Add labels like approval/review or use approval statuses to populate this view." project={project} issues={findApprovalIssues(issues)} />;
     case "forms":
@@ -880,7 +849,7 @@ export default async function IssuesPage({ params, searchParams }: { params: Pro
 
       <div className="rounded-3xl border border-card-border bg-page p-5 shadow-sm">
         {view !== "forms" && view !== "summary" && view !== "board" && <div className="mb-4 space-y-4"><SavedFilterBar projectKey={project.key} filters={savedFilters} activeView={view} /><Filters project={project} members={members} labels={labels} qs={qs} /></div>}
-        <ProjectView view={view} activeWorkspaceId={active.id} project={project} issues={issues} members={members} create={create} showJira={qs.showJira === "1"} />
+        <ProjectView view={view} activeWorkspaceId={active.id} project={project} issues={issues} members={members} create={create} showJira={qs.showJira === "1"} qs={qs} />
       </div>
     </div>
   );

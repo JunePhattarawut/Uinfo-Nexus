@@ -11,13 +11,14 @@ import {
   Settings,
   BookOpen,
   FileText,
-  Plus,
+  ChevronRight,
+  ArrowRight,
 } from "lucide-react";
 import { SidebarCollapseButton } from "./SidebarCollapseButton";
 import { signOutAction } from "@/app/(app)/auth-actions";
 
 type Project = { id: string; key: string; name: string; _count?: { issues: number } };
-type Space = { id: string; key: string; name: string };
+type Space = { id: string; key: string; name: string; iconEmoji: string };
 
 const iconByKey: Record<string, string> = {
   CTI: "🛡️", CTR: "📝", CPAR: "✅", DAR: "📨", GSR: "🎧",
@@ -28,7 +29,7 @@ const iconByKey: Record<string, string> = {
 
 const STARRED_KEY = "workhub.starred.projects";
 const RECENT_KEY = "workhub.recent.projects";
-const MAX_RECENT = 5;
+const MAX_RECENT = 3;
 
 function loadSet(key: string): Set<string> {
   try {
@@ -158,15 +159,18 @@ export function AppSidebar({
   spaces,
   userEmail,
   notificationCount,
+  canAdmin = false,
 }: {
   projects: Project[];
   spaces: Space[];
   userEmail: string;
   notificationCount: number;
+  canAdmin?: boolean;
 }) {
   const pathname = usePathname();
   const [starredIds, setStarredIds] = useState<Set<string>>(new Set());
   const [recentIds, setRecentIds] = useState<string[]>([]);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   useEffect(() => {
     setStarredIds(loadSet(STARRED_KEY));
@@ -273,22 +277,61 @@ export function AppSidebar({
           ) : (
             <p className="px-2 py-1 text-[11px] text-sidebar-muted/50">No recent projects yet</p>
           )}
-          <Link
-            href="/projects"
-            className="flex items-center gap-2 rounded-md px-2 py-[7px] text-[12.5px] font-medium text-sidebar-muted/50 hover:bg-white/[.05] hover:text-sidebar-text/70"
+        </div>
+
+        {/* All Projects — expandable */}
+        <div className="mt-0.5">
+          <button
+            type="button"
+            onClick={() => setShowAllProjects((v) => !v)}
+            className="wh-sidebar-text flex w-full items-center gap-1.5 rounded-md px-2 py-[7px] text-[12.5px] font-medium text-sidebar-text/50 transition-colors hover:bg-white/[.05] hover:text-sidebar-text/80"
           >
-            <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-[4px] bg-white/[.06]">
-              <Plus size={11} strokeWidth={2} />
+            <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
+              <ChevronRight
+                size={13}
+                strokeWidth={2}
+                className={`transition-transform duration-150 ${showAllProjects ? "rotate-90" : ""}`}
+              />
             </span>
-            <span className="wh-sidebar-text">All Projects</span>
-          </Link>
+            <span className="wh-sidebar-text flex-1 text-left">All Projects</span>
+            <span className="wh-sidebar-text rounded bg-white/[.07] px-1.5 py-px text-[10px] tabular-nums text-sidebar-muted/60">
+              {projects.length}
+            </span>
+          </button>
+
+          {showAllProjects && (
+            <div className="mt-0.5 flex flex-col gap-px">
+              {projects.slice(0, 10).map((p) => (
+                <ProjectRow
+                  key={p.id}
+                  project={p}
+                  isStarred={starredIds.has(p.id)}
+                  onStar={toggleStar}
+                  onVisit={recordVisit}
+                />
+              ))}
+              <Link
+                href="/projects"
+                className="mt-0.5 flex items-center gap-2 rounded-md px-2 py-[6px] text-[11.5px] font-medium text-sidebar-muted/40 transition-colors hover:bg-white/[.05] hover:text-sidebar-muted/80"
+              >
+                <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
+                  <ArrowRight size={12} strokeWidth={2} />
+                </span>
+                <span className="wh-sidebar-text">
+                  {projects.length > 10
+                    ? `More Projects (${projects.length - 10} more)`
+                    : "More Projects"}
+                </span>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Spaces */}
         <SectionLabel>Spaces</SectionLabel>
         <div className="flex flex-col gap-px">
           {spaces.slice(0, 4).map((space) => (
-            <NavItem key={space.id} href={`/s/${space.key}`} icon={<BookOpen size={14} strokeWidth={1.75} />} label={space.name} />
+            <NavItem key={space.id} href={`/s/${space.key}`} icon={<span className="text-[14px] leading-none">{space.iconEmoji}</span>} label={space.name} />
           ))}
           <NavItem href="/spaces" icon={<FileText size={14} strokeWidth={1.75} />} label="Uinfo Codex" />
         </div>
@@ -297,7 +340,9 @@ export function AppSidebar({
         <SectionLabel>Workspace</SectionLabel>
         <div className="flex flex-col gap-px">
           <NavItem href="/dashboards" icon={<LayoutDashboard size={14} strokeWidth={1.75} />} label="Dashboards" />
-          <NavItem href="/admin" icon={<Settings size={14} strokeWidth={1.75} />} label="Settings" />
+          {canAdmin && (
+            <NavItem href="/admin" icon={<Settings size={14} strokeWidth={1.75} />} label="Admin" />
+          )}
         </div>
       </nav>
 

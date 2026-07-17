@@ -3,6 +3,8 @@ import { requireUser } from "@/lib/auth";
 import { getActiveWorkspace } from "@/lib/active-workspace";
 import { RichTextRenderer } from "@/components/RichTextRenderer";
 import { RichTextEditor } from "@/components/RichTextEditor";
+import { CommentForm } from "@/components/CommentForm";
+import { DescriptionSection } from "@/components/DescriptionSection";
 import { IssueDirtySaveGuard } from "@/components/IssueDirtySaveGuard";
 import { prisma } from "@/lib/db";
 import * as issueService from "@/modules/issue/service";
@@ -227,19 +229,12 @@ export default async function IssueDetailPage({ params }: { params: Promise<{ pr
               </ul>
             </section>
 
-            <section className="rounded-2xl border border-card-border bg-card p-5 shadow-sm">
-              <div className="mb-3 flex items-center justify-between">
-                <h2 className="font-heading text-xl font-extrabold text-ink">Description</h2>
-                <span className="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-bold text-accent-soft-text">Editable inline</span>
-              </div>
-              <RichTextEditor
-                form="issue-update-form"
-                name="descriptionText"
-                defaultValue={descriptionText}
-                placeholder="Add a description, context, findings, acceptance criteria…"
-                minHeightClassName="min-h-[260px]"
-              />
-            </section>
+            <DescriptionSection
+              form="issue-update-form"
+              name="descriptionText"
+              defaultValue={descriptionText}
+              placeholder="Add a description, context, findings, acceptance criteria…"
+            />
 
             <section id="references" className="rounded-2xl border border-card-border bg-card p-5 shadow-sm">
               <div className="mb-4 flex items-center justify-between">
@@ -327,33 +322,15 @@ export default async function IssueDetailPage({ params }: { params: Promise<{ pr
 
               <div className="activity-panels">
                 <div className="activity-panel comments-panel">
-                  <div id="comments" className="flex gap-4">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white">{user.name?.[0] ?? "U"}</div>
-                    <div className="min-w-0 flex-1">
-                      <form action={addComment} className="rounded-lg border bg-gray-50 p-4">
-                        <textarea name="bodyText" required placeholder="Add a comment..." className="min-h-16 w-full resize-y rounded border-0 bg-transparent p-0 text-sm outline-none placeholder:text-gray-500 focus:ring-0" />
-                        <div className="mt-3 flex flex-wrap gap-3 text-sm font-semibold text-gray-700">
-                          <button type="button" className="rounded px-2 py-1 hover:bg-white">🎉 Looks good!</button>
-                          <button type="button" className="rounded px-2 py-1 hover:bg-white">👋 Need help?</button>
-                          <button type="button" className="rounded px-2 py-1 hover:bg-white">⛔ This is blocked...</button>
-                          <button type="button" className="rounded px-2 py-1 hover:bg-white">🔍 Can you clarify...?</button>
-                          <button type="button" className="rounded px-2 py-1 hover:bg-white">✅ This is on track</button>
-                        </div>
-                        <div className="mt-3 flex justify-end">
-                          <button className="rounded bg-[var(--wh-accent)] px-3 py-2 text-sm font-medium text-white">Comment</button>
-                        </div>
-                      </form>
-                      <p className="mt-2 text-xs text-gray-500"><b>Pro tip:</b> add context or paste Jira-style notes here.</p>
-                      <div className="mt-5 space-y-3">
-                        {issue.comments.map((c) => (
-                          <div key={c.id} className="rounded-lg border p-3">
-                            <p className="text-xs text-gray-500">{c.author.name} · {new Date(c.createdAt).toLocaleString()}</p>
-                            <RichTextRenderer doc={c.body} empty="" />
-                          </div>
-                        ))}
-                        {issue.comments.length === 0 && <p className="text-sm text-gray-500">No comments yet.</p>}
+                  <CommentForm action={addComment} authorInitial={user.name?.[0] ?? "U"} />
+                  <div className="mt-5 space-y-3">
+                    {issue.comments.map((c) => (
+                      <div key={c.id} className="rounded-lg border p-3">
+                        <p className="text-xs text-gray-500">{c.author.name} · {new Date(c.createdAt).toLocaleString()}</p>
+                        <RichTextRenderer doc={c.body} empty="" />
                       </div>
-                    </div>
+                    ))}
+                    {issue.comments.length === 0 && <p className="text-sm text-gray-500">No comments yet.</p>}
                   </div>
                 </div>
 

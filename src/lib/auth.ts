@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { verifyPassword } from "@/lib/password";
@@ -9,6 +10,29 @@ const credentialsSchema = z.object({
   email: z.string().email(),
   password: z.string().min(1),
 });
+
+/** Returns true if the email is on the configured allowlist. */
+function isEmailAllowed(email: string): boolean {
+  const normalised = email.toLowerCase();
+
+  const allowedEmails = (process.env.ALLOWED_EMAILS ?? "")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+
+  const allowedDomains = (process.env.ALLOWED_EMAIL_DOMAINS ?? "")
+    .split(",")
+    .map((d) => d.trim().toLowerCase())
+    .filter(Boolean);
+
+  // If no restrictions configured → open to any Google account
+  if (allowedEmails.length === 0 && allowedDomains.length === 0) return true;
+
+  if (allowedEmails.includes(normalised)) return true;
+  if (allowedDomains.some((d) => normalised.endsWith(`@${d}`))) return true;
+
+  return false;
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -30,7 +54,57 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return { id: user.id, email: user.email, name: user.name };
       },
     }),
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
+  callbacks: {
+    ...authConfig.callbacks,
+    async signIn({ user, account }) {
+      // Only apply allowlist check for Google OAuth
+      if (account?.provider === "google") {
+        const email = (user.email ?? "").toLowerCase();
+
+        if (!isEmailAllowed(email)) return false;
+
+        // Find or auto-create the DB user on first Google login
+        let dbUser = await prisma.user.findUnique({ where: { email } });
+        if (!dbUser) {
+          dbUser = await prisma.user.create({
+            data: {
+              email,
+              name: user.name ?? email.split("@")[0] ?? "User",
+              passwordHash: "", // Google users have no password
+              avatarUrl: user.image ?? null,
+            },
+          });
+        } else if (user.image && !dbUser.avatarUrl) {
+          await prisma.user.update({
+            where: { id: dbUser.id },
+            data: { avatarUrl: user.image },
+          });
+        }
+
+        // Auto-promote SUPER_ADMIN_EMAIL to OWNER on every login
+        const superAdmin = (process.env.SUPER_ADMIN_EMAIL ?? "").toLowerCase();
+        if (superAdmin && email === superAdmin) {
+          const workspace = await prisma.workspace.findFirst();
+          if (workspace) {
+            await prisma.membership.upsert({
+              where: { userId_workspaceId: { userId: dbUser.id, workspaceId: workspace.id } },
+              update: { role: "OWNER" },
+              create: { userId: dbUser.id, workspaceId: workspace.id, role: "OWNER" },
+            });
+          }
+        }
+
+        // Store DB id so the jwt callback can persist it in the token
+        user.id = dbUser.id;
+      }
+      return true;
+    },
+  },
 });
 
 /** Session guard for server components / route handlers. */

@@ -1,19 +1,18 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { requireUser } from "@/lib/auth";
-import { getActiveWorkspace } from "@/lib/active-workspace";
+import { actionGuard } from "@/lib/rbac";
 import * as codex from "@/modules/codex/service";
 import { createSpaceSchema } from "@/modules/codex/schemas";
 
 export async function createSpaceAction(formData: FormData) {
-  const user = await requireUser();
-  const { active } = await getActiveWorkspace(user.id);
-  if (!active) throw new Error("No active workspace");
-  const space = await codex.createSpace(user.id, active.id, createSpaceSchema.parse({
+  const ctx = await actionGuard("space:create");
+  if (!ctx) return;
+  const space = await codex.createSpace(ctx.user.id, ctx.workspace.id, createSpaceSchema.parse({
     key: String(formData.get("key") || ""),
     name: String(formData.get("name") || ""),
     description: String(formData.get("description") || ""),
+    iconEmoji: String(formData.get("iconEmoji") || "📄"),
   }));
   redirect(`/s/${space.key}`);
 }

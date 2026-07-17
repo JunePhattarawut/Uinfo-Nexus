@@ -6,7 +6,7 @@ import { DndContext, DragEndEvent, PointerSensor, useSensor, useSensors } from "
 import { SortableContext, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-type PageNode = { id: string; title: string; parentId: string | null; rank: string };
+type PageNode = { id: string; title: string; emoji?: string | null; parentId: string | null; rank: string };
 type FlatPage = PageNode & { depth: number };
 type RowMode = "idle" | "menu" | "rename" | "newchild";
 
@@ -41,6 +41,7 @@ function SortablePageRow({
   disabled,
   hasChildren,
   isExpanded,
+  isActive,
   onToggle,
   createPageAction,
   renamePageAction,
@@ -51,6 +52,7 @@ function SortablePageRow({
   disabled: boolean;
   hasChildren: boolean;
   isExpanded: boolean;
+  isActive: boolean;
   onToggle: (id: string) => void;
   createPageAction: (fd: FormData) => Promise<void>;
   renamePageAction: (fd: FormData) => Promise<void>;
@@ -102,12 +104,12 @@ function SortablePageRow({
       data-page-id={page.id}
       data-parent-id={page.parentId ?? "root"}
     >
-      <div className="flex items-center gap-2 px-2 py-1.5">
+      <div className={`flex items-center gap-1.5 px-2 py-1.5 ${isActive ? "rounded-lg bg-accent/8" : ""}`}>
         <button
           type="button"
           aria-label={`Drag ${page.title}`}
           title="Drag to reorder in the page tree"
-          className="cursor-grab rounded border border-card-border bg-page px-2 py-1 text-xs font-extrabold text-ink-secondary active:cursor-grabbing"
+          className="cursor-grab rounded border border-card-border bg-page px-1.5 py-0.5 text-[10px] font-extrabold text-ink-secondary opacity-0 active:cursor-grabbing group-hover:opacity-100"
           {...attributes}
           {...listeners}
         >
@@ -117,10 +119,12 @@ function SortablePageRow({
           type="button"
           aria-label={isExpanded ? `Collapse ${page.title}` : `Expand ${page.title}`}
           onClick={() => onToggle(page.id)}
-          className={`flex h-5 w-5 flex-shrink-0 items-center justify-center rounded text-xs text-ink-secondary transition-colors hover:bg-card hover:text-ink ${!hasChildren ? "invisible pointer-events-none" : ""}`}
+          className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded text-[10px] text-ink-secondary transition-colors hover:bg-card hover:text-ink ${!hasChildren ? "invisible pointer-events-none" : ""}`}
         >
           {isExpanded ? "▾" : "▸"}
         </button>
+
+        <span className="shrink-0 text-[13px] leading-none">{page.emoji ?? "📄"}</span>
 
         {mode === "rename" ? (
           <input
@@ -129,20 +133,16 @@ function SortablePageRow({
             onChange={(e) => setLocalTitle(e.target.value)}
             onKeyDown={handleRenameKeyDown}
             onBlur={() => setMode("idle")}
-            className="min-w-0 flex-1 rounded border border-accent px-2 py-0.5 text-sm font-semibold text-ink outline-none ring-1 ring-accent/30"
+            className="min-w-0 flex-1 rounded border border-accent px-2 py-0.5 text-[12.5px] font-semibold text-ink outline-none ring-1 ring-accent/30"
           />
         ) : (
           <Link
-            className="min-w-0 flex-1 truncate rounded px-1 py-1 font-semibold text-ink hover:text-accent"
+            className={`min-w-0 flex-1 truncate rounded px-1 py-0.5 text-[12.5px] font-semibold transition-colors ${isActive ? "text-accent" : "text-ink hover:text-accent"}`}
             href={`/s/${spaceKey}/pages/${page.id}`}
           >
             {localTitle}
           </Link>
         )}
-
-        <span className="hidden rounded-full bg-page px-2 py-0.5 text-[10px] font-bold uppercase text-ink-secondary group-hover:inline-flex">
-          depth {page.depth}
-        </span>
 
         <div className="relative" ref={menuRef}>
           <button
@@ -215,11 +215,13 @@ export function CodexPageTreeDnd({
   spaceKey,
   createPageAction,
   renamePageAction,
+  activePageId,
 }: {
   pages: PageNode[];
   spaceKey: string;
   createPageAction: (fd: FormData) => Promise<void>;
   renamePageAction: (fd: FormData) => Promise<void>;
+  activePageId?: string;
 }) {
   const [items, setItems] = useState(() => flatten(pages));
   const [message, setMessage] = useState("Drag a page onto a sibling to reorder within that sibling group.");
@@ -319,6 +321,7 @@ export function CodexPageTreeDnd({
                 disabled={isPending}
                 hasChildren={pagesWithChildren.has(page.id)}
                 isExpanded={!effectiveCollapsed.has(page.id)}
+                isActive={page.id === activePageId}
                 onToggle={toggleExpanded}
                 createPageAction={createPageAction}
                 renamePageAction={renamePageAction}

@@ -5,17 +5,21 @@ export const createSpaceSchema = z.object({
   key: z.string().trim().min(2).max(12).regex(/^[A-Z][A-Z0-9]*$/),
   name: z.string().trim().min(1).max(120),
   description: z.string().trim().max(1000).optional().default(""),
+  iconEmoji: z.string().trim().max(8).optional().default("📄"),
+  isPrivate: z.coerce.boolean().optional().default(false),
 });
 
 export const createPageSchema = z.object({
   spaceId: z.string().min(1),
   parentId: z.string().min(1).nullable().optional(),
   title: z.string().trim().min(1).max(200),
+  emoji: z.string().trim().max(8).nullable().optional(),
   contentText: z.string().max(50000).optional().default(""),
 });
 
 export const updatePageSchema = z.object({
   title: z.string().trim().min(1).max(200).optional(),
+  emoji: z.string().trim().max(8).nullable().optional(),
   contentText: z.string().max(50000).optional(),
   publish: z.coerce.boolean().optional().default(false),
 });
@@ -38,9 +42,9 @@ export function tiptapDoc(text: string) {
   return richDocFromMarkdown(text) as any;
 }
 
-export type CreateSpaceInput = z.infer<typeof createSpaceSchema>;
-export type CreatePageInput = z.infer<typeof createPageSchema>;
-export type UpdatePageInput = z.infer<typeof updatePageSchema>;
+export type CreateSpaceInput = z.input<typeof createSpaceSchema>;
+export type CreatePageInput = z.input<typeof createPageSchema>;
+export type UpdatePageInput = z.input<typeof updatePageSchema>;
 export type MovePageInput = z.infer<typeof movePageSchema>;
 export type CreatePageCommentInput = z.infer<typeof createPageCommentSchema>;
 export type AttachFileInput = z.infer<typeof attachFileSchema>;

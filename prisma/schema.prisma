@@ -298,6 +298,9 @@ model Space {
   key         String
   name        String
   description String?
+  iconEmoji   String  @default("📄")
+  isPrivate   Boolean @default(false)
+  createdBy   String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -316,6 +319,7 @@ model Page {
   spaceId     String
   parentId    String?
   title       String
+  emoji       String? // page icon (e.g. "📝")
   content     Json? // Tiptap JSON (D6)
   editorV     Int       @default(1)
   rank        String // sibling order within parent (D8)

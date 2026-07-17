@@ -143,6 +143,8 @@ async function main() {
       key: "TEAM",
       name: "Team Handbook",
       description: "Seeded space for local development",
+      iconEmoji: "📚",
+      createdBy: alice.id,
     },
   });
 

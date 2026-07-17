@@ -38,7 +38,7 @@ export async function getSpace(userId: string, workspaceId: string, spaceKey: st
 
 export async function createSpace(userId: string, workspaceId: string, input: CreateSpaceInput) {
   await requireMembership(userId, workspaceId, "MEMBER");
-  return prisma.space.create({ data: { workspaceId, key: input.key.toUpperCase(), name: input.name, description: input.description || null } });
+  return prisma.space.create({ data: { workspaceId, key: input.key.toUpperCase(), name: input.name, description: input.description || null, iconEmoji: input.iconEmoji ?? "📄", isPrivate: input.isPrivate ?? false, createdBy: userId } });
 }
 
 export async function createPage(userId: string, workspaceId: string, input: CreatePageInput) {
@@ -51,8 +51,8 @@ export async function createPage(userId: string, workspaceId: string, input: Cre
       if (!parent) throw new AppError("VALIDATION", "Parent page not found");
     }
     const last = await tx.page.findFirst({ where: { workspaceId, spaceId: input.spaceId, parentId: input.parentId ?? null, deletedAt: null }, orderBy: { rank: "desc" }, select: { rank: true } });
-    const content = tiptapDoc(input.contentText);
-    const page = await tx.page.create({ data: { workspaceId, spaceId: input.spaceId, parentId: input.parentId ?? null, title: input.title, content, rank: rankAfter(last?.rank ?? null), createdBy: userId, updatedBy: userId } });
+    const content = tiptapDoc(input.contentText ?? "");
+    const page = await tx.page.create({ data: { workspaceId, spaceId: input.spaceId, parentId: input.parentId ?? null, title: input.title, emoji: input.emoji ?? null, content, rank: rankAfter(last?.rank ?? null), createdBy: userId, updatedBy: userId } });
     await tx.pageVersion.create({ data: { pageId: page.id, version: 1, title: page.title, content, authorId: userId } });
     return page;
   });
@@ -80,7 +80,7 @@ export async function updatePage(userId: string, workspaceId: string, pageId: st
     if (!existing) throw new AppError("NOT_FOUND", "Page not found");
     if (existing.lockedBy && existing.lockedBy !== userId && !lockExpired(existing)) throw new AppError("CONFLICT", "Page is locked by another user");
     const content = input.contentText !== undefined ? tiptapDoc(input.contentText) : undefined;
-    const updated = await tx.page.update({ where: { id: pageId }, data: { ...(input.title ? { title: input.title } : {}), ...(content ? { content } : {}), updatedBy: userId } });
+    const updated = await tx.page.update({ where: { id: pageId }, data: { ...(input.title ? { title: input.title } : {}), ...(content ? { content } : {}), ...("emoji" in input ? { emoji: input.emoji ?? null } : {}), updatedBy: userId } });
     if (input.publish) {
       const nextVersion = (existing.versions[0]?.version ?? 0) + 1;
       await tx.pageVersion.create({ data: { pageId, version: nextVersion, title: updated.title, content: (updated.content ?? tiptapDoc("")) as Prisma.InputJsonValue, authorId: userId } });
