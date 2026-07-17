@@ -151,3 +151,50 @@ export async function addAttachment(userId: string, workspaceId: string, pageId:
   const parsed = attachFileSchema.parse(input);
   return prisma.attachment.create({ data: { workspaceId, pageId, filename: parsed.filename, mimeType: parsed.mimeType, size: parsed.size, storageKey: `local-dev/${pageId}/${Date.now()}-${parsed.filename}` } });
 }
+
+export async function deletePage(userId: string, workspaceId: string, pageId: string) {
+  await requireMembership(userId, workspaceId, "MEMBER");
+  const page = await prisma.page.findFirst({ where: { id: pageId, workspaceId, deletedAt: null } });
+  if (!page) throw new AppError("NOT_FOUND", "Page not found");
+  // Soft-delete this page and all descendants
+  const allPages = await prisma.page.findMany({ where: { workspaceId, spaceId: page.spaceId, deletedAt: null }, select: { id: true, parentId: true } });
+  const toDelete = new Set<string>();
+  const queue = [pageId];
+  while (queue.length) {
+    const id = queue.shift()!;
+    toDelete.add(id);
+    allPages.filter((p) => p.parentId === id).forEach((p) => queue.push(p.id));
+  }
+  await prisma.page.updateMany({ where: { id: { in: [...toDelete] }, workspaceId }, data: { deletedAt: new Date() } });
+  return { spaceId: page.spaceId, deletedCount: toDelete.size };
+}
+
+export async function updateSpace(userId: string, workspaceId: string, spaceKey: string, input: { name?: string; description?: string; iconEmoji?: string }) {
+  await requireMembership(userId, workspaceId, "MEMBER");
+  const space = await prisma.space.findFirst({ where: { workspaceId, key: spaceKey.toUpperCase() } });
+  if (!space) throw new AppError("NOT_FOUND", "Space not found");
+  return prisma.space.update({
+    where: { id: space.id },
+    data: {
+      ...(input.name ? { name: input.name } : {}),
+      ...(input.description !== undefined ? { description: input.description || null } : {}),
+      ...(input.iconEmoji ? { iconEmoji: input.iconEmoji } : {}),
+    },
+  });
+}
+
+export async function searchPages(userId: string, workspaceId: string, q: string, spaceId?: string) {
+  await requireMembership(userId, workspaceId, "VIEWER");
+  if (!q.trim()) return [];
+  return prisma.page.findMany({
+    where: {
+      workspaceId,
+      deletedAt: null,
+      ...(spaceId ? { spaceId } : {}),
+      title: { contains: q, mode: "insensitive" },
+    },
+    orderBy: { updatedAt: "desc" },
+    take: 20,
+    include: { space: { select: { key: true, name: true, iconEmoji: true } } },
+  });
+}

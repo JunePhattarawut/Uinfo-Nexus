@@ -8,7 +8,7 @@ import { CSS } from "@dnd-kit/utilities";
 
 type PageNode = { id: string; title: string; emoji?: string | null; parentId: string | null; rank: string };
 type FlatPage = PageNode & { depth: number };
-type RowMode = "idle" | "menu" | "rename" | "newchild";
+type RowMode = "idle" | "menu" | "rename" | "newchild" | "confirmdelete";
 
 function flatten(pages: PageNode[], parentId: string | null = null, depth = 0): FlatPage[] {
   return pages
@@ -45,7 +45,9 @@ function SortablePageRow({
   onToggle,
   createPageAction,
   renamePageAction,
+  deletePageAction,
   onRenameComplete,
+  onDeleteComplete,
 }: {
   page: FlatPage;
   spaceKey: string;
@@ -56,12 +58,15 @@ function SortablePageRow({
   onToggle: (id: string) => void;
   createPageAction: (fd: FormData) => Promise<void>;
   renamePageAction: (fd: FormData) => Promise<void>;
+  deletePageAction: (pageId: string) => Promise<void>;
   onRenameComplete: (pageId: string, newTitle: string) => void;
+  onDeleteComplete: (pageId: string) => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: page.id, disabled });
   const [mode, setMode] = useState<RowMode>("idle");
   const [localTitle, setLocalTitle] = useState(page.title);
   const [, startRenameTransition] = useTransition();
+  const [, startDeleteTransition] = useTransition();
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Sync localTitle when not renaming (handles optimistic update + server refresh)
@@ -169,10 +174,46 @@ function SortablePageRow({
               >
                 <span className="text-ink-secondary">✎</span> Rename
               </button>
+              <button
+                type="button"
+                className="flex w-full items-center gap-2 px-3 py-2 text-left text-xs font-semibold text-red-600 hover:bg-red-50"
+                onClick={() => setMode("confirmdelete")}
+              >
+                <span>🗑</span> Delete
+              </button>
             </div>
           )}
         </div>
       </div>
+
+      {mode === "confirmdelete" && (
+        <div className="mx-2 mb-2 rounded-lg border border-red-200 bg-red-50 p-3">
+          <p className="text-[11px] font-extrabold uppercase tracking-wide text-red-600">Delete page</p>
+          <p className="mt-1 text-xs font-semibold text-red-700">
+            Delete &ldquo;{localTitle}&rdquo;{hasChildren ? " and all children" : ""}? This cannot be undone.
+          </p>
+          <div className="mt-2 flex gap-2">
+            <button
+              type="button"
+              className="rounded-lg bg-red-600 px-3 py-1 text-xs font-extrabold text-white hover:bg-red-700"
+              onClick={() => {
+                onDeleteComplete(page.id);
+                startDeleteTransition(() => { void deletePageAction(page.id); });
+                setMode("idle");
+              }}
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              className="rounded-lg border border-card-border px-3 py-1 text-xs font-semibold text-ink-secondary hover:bg-card"
+              onClick={() => setMode("idle")}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
 
       {mode === "newchild" && (
         <form
@@ -215,12 +256,14 @@ export function CodexPageTreeDnd({
   spaceKey,
   createPageAction,
   renamePageAction,
+  deletePageAction,
   activePageId,
 }: {
   pages: PageNode[];
   spaceKey: string;
   createPageAction: (fd: FormData) => Promise<void>;
   renamePageAction: (fd: FormData) => Promise<void>;
+  deletePageAction?: (pageId: string) => Promise<void>;
   activePageId?: string;
 }) {
   const [items, setItems] = useState(() => flatten(pages));
@@ -271,6 +314,20 @@ export function CodexPageTreeDnd({
 
   const onRenameComplete = useCallback((pageId: string, newTitle: string) => {
     setItems((prev) => prev.map((item) => item.id === pageId ? { ...item, title: newTitle } : item));
+  }, []);
+
+  const onDeleteComplete = useCallback((pageId: string) => {
+    // Remove this page and all its descendants from local state immediately
+    setItems((prev) => {
+      const toRemove = new Set<string>();
+      const queue = [pageId];
+      while (queue.length) {
+        const id = queue.shift()!;
+        toRemove.add(id);
+        prev.filter((p) => p.parentId === id).forEach((p) => queue.push(p.id));
+      }
+      return prev.filter((item) => !toRemove.has(item.id));
+    });
   }, []);
 
   async function persistMove(activeId: string, overId: string) {
@@ -325,7 +382,9 @@ export function CodexPageTreeDnd({
                 onToggle={toggleExpanded}
                 createPageAction={createPageAction}
                 renamePageAction={renamePageAction}
+                deletePageAction={deletePageAction ?? (() => Promise.resolve())}
                 onRenameComplete={onRenameComplete}
+                onDeleteComplete={onDeleteComplete}
               />
             ))}
           </ul>

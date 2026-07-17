@@ -637,17 +637,89 @@ function SimpleIssueList({ title, empty, project, issues }: { title: string; emp
 
 function DocsView({ project, issues }: { project: ProjectForView; issues: IssueForView[] }) {
   const linked = issues.flatMap((issue) => pageLinksOf(issue).map((link) => ({ issue, page: link.page })));
+  // Deduplicate by page id, keeping all linked issues for a page
+  type LinkedPage = NonNullable<IssuePageLink["page"]>;
+  const pageMap = new Map<string, { page: LinkedPage; issues: IssueForView[] }>();
+  for (const { issue, page } of linked) {
+    if (!page) continue;
+    const entry = pageMap.get(page.id);
+    if (entry) { entry.issues.push(issue); }
+    else { pageMap.set(page.id, { page, issues: [issue] }); }
+  }
+  const uniquePages = [...pageMap.values()];
+
   return (
-    <section className="rounded-2xl border border-card-border bg-card p-5 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
-        <h2 className="font-heading text-lg font-extrabold text-ink">Docs linked to work items</h2>
-        <span className="rounded-full bg-page px-3 py-1 text-xs font-bold text-ink-secondary">{linked.length}</span>
-      </div>
-      <ul className="mt-3 grid gap-2 md:grid-cols-2">
-        {linked.map(({ issue, page }) => <li key={`${issue.id}-${page.id}`} className="rounded-xl border border-card-border bg-page p-3 text-sm"><WorkItemLink issue={issue} projectKey={project.key} /> <span className="mx-2 text-ink-secondary">→</span><Link className="font-semibold text-accent" href={`/s/${page.space.key}/pages/${page.id}`}>{page.space.key} / {page.title}</Link></li>)}
-        {!linked.length && <EmptyState>No Uinfo Codex docs linked yet.</EmptyState>}
-      </ul>
-    </section>
+    <div className="space-y-5">
+      {/* Header + stats */}
+      <section className="overflow-hidden rounded-2xl border border-card-border bg-card shadow-sm">
+        <div className="grid gap-4 bg-[linear-gradient(135deg,#eef1fc,#ffffff_60%,#f0faf5)] p-5 md:grid-cols-[minmax(0,1fr)_auto]">
+          <div>
+            <p className="text-[11px] font-extrabold uppercase tracking-wide text-accent">Uinfo Codex · Project Docs</p>
+            <h2 className="mt-1 font-heading text-xl font-extrabold text-ink">Knowledge Base</h2>
+            <p className="mt-1 text-sm text-ink-secondary">Codex pages linked to {project.key} work items. Open any page to read, edit, or leave comments.</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="rounded-2xl border border-card-border bg-white/80 px-4 py-3 text-center shadow-sm">
+              <p className="text-[10px] font-extrabold uppercase text-ink-secondary">Pages</p>
+              <p className="mt-0.5 font-heading text-2xl font-extrabold text-ink">{uniquePages.length}</p>
+            </div>
+            <div className="rounded-2xl border border-card-border bg-white/80 px-4 py-3 text-center shadow-sm">
+              <p className="text-[10px] font-extrabold uppercase text-ink-secondary">Links</p>
+              <p className="mt-0.5 font-heading text-2xl font-extrabold text-ink">{linked.length}</p>
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-2 border-t border-card-border/60 bg-page/50 px-5 py-3">
+          <Link href="/spaces" className="rounded-xl border border-card-border bg-white px-3 py-1.5 text-[12px] font-bold text-ink-secondary hover:border-accent/40 hover:text-accent">
+            📚 Browse Codex
+          </Link>
+          <Link href="/spaces#create-page" className="rounded-xl bg-accent px-3 py-1.5 text-[12px] font-extrabold text-white hover:opacity-90">
+            + New page
+          </Link>
+        </div>
+      </section>
+
+      {/* Pages list */}
+      <section className="rounded-2xl border border-card-border bg-card p-5 shadow-sm">
+        <h3 className="mb-3 font-heading text-[14px] font-extrabold text-ink">
+          Linked pages
+          <span className="ml-2 rounded-full bg-page px-2 py-0.5 text-[11px] font-bold text-ink-secondary ring-1 ring-card-border">{uniquePages.length}</span>
+        </h3>
+        {uniquePages.length === 0 ? (
+          <div className="rounded-xl border border-dashed border-card-border bg-page p-8 text-center">
+            <p className="text-2xl">📄</p>
+            <p className="mt-2 text-sm font-semibold text-ink-secondary">No Codex pages linked yet</p>
+            <p className="mt-1 text-[12px] text-ink-secondary/60">Open an issue and link a Codex page to it — it will appear here.</p>
+          </div>
+        ) : (
+          <div className="grid gap-3 md:grid-cols-2">
+            {uniquePages.map(({ page, issues: pageIssues }) => (
+              <div key={page.id} className="overflow-hidden rounded-xl border border-card-border bg-page transition hover:border-accent/30">
+                <Link href={`/s/${page.space.key}/pages/${page.id}`} className="block p-4">
+                  <div className="flex items-start gap-2.5">
+                    <span className="mt-0.5 shrink-0 text-lg leading-none">📄</span>
+                    <div className="min-w-0">
+                      <p className="truncate font-heading text-[14px] font-extrabold text-ink">{page.title}</p>
+                      <p className="mt-0.5 text-[11px] font-semibold text-accent">{page.space.key}</p>
+                    </div>
+                  </div>
+                </Link>
+                <div className="border-t border-card-border/50 bg-card/50 px-4 py-2">
+                  <p className="mb-1.5 text-[10px] font-extrabold uppercase tracking-wide text-ink-secondary">Linked work items</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {pageIssues.map((issue) => (
+                      <Link key={issue.id} href={issueHref(project.key, issue)} className="rounded-md bg-accent/8 px-2 py-0.5 text-[11px] font-bold text-accent hover:bg-accent/15">
+                        {project.key}-{issue.number}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
   );
 }
 

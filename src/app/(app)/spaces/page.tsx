@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { BookOpen, Plus, Clock, FileText, MessageSquare, ChevronRight } from "lucide-react";
+import { BookOpen, Plus, Clock, FileText, MessageSquare, ChevronRight, Search } from "lucide-react";
 import { requireUser } from "@/lib/auth";
 import { getActiveWorkspace } from "@/lib/active-workspace";
 import { prisma } from "@/lib/db";
+import * as codex from "@/modules/codex/service";
 import { createSpaceAction } from "./actions";
 
 const EMOJI_PRESETS = ["📄","📚","🗂️","🏗️","🚀","🧪","🎨","🔧","📊","🛡️","🌐","⚙️","💡","📋","🔬","🤝"];
@@ -19,12 +20,15 @@ function timeAgo(date: Date): string {
   return date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
 }
 
-export default async function CodexHomePage() {
+export default async function CodexHomePage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const user = await requireUser();
   const { active } = await getActiveWorkspace(user.id);
   if (!active) return <p className="p-8 text-ink-secondary">No active workspace.</p>;
 
-  const [spaces, recentPages, totalPages, totalComments] = await Promise.all([
+  const { q } = await searchParams;
+  const searchQuery = (q ?? "").trim();
+
+  const [spaces, recentPages, totalPages, totalComments, searchResults] = await Promise.all([
     prisma.space.findMany({
       where: { workspaceId: active.id },
       orderBy: { name: "asc" },
@@ -53,6 +57,7 @@ export default async function CodexHomePage() {
     }),
     prisma.page.count({ where: { workspaceId: active.id, deletedAt: null } }),
     prisma.comment.count({ where: { page: { workspaceId: active.id, deletedAt: null } } }),
+    searchQuery ? codex.searchPages(user.id, active.id, searchQuery) : Promise.resolve([]),
   ]);
 
   return (
@@ -86,6 +91,46 @@ export default async function CodexHomePage() {
               </div>
             ))}
           </div>
+        </div>
+        {/* Search bar */}
+        <div className="border-t border-card-border/60 bg-page/50 px-8 py-4">
+          <form method="GET" action="/spaces" className="flex gap-2">
+            <div className="relative flex-1">
+              <Search size={14} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-secondary/50" strokeWidth={2} />
+              <input
+                name="q"
+                defaultValue={searchQuery}
+                placeholder="Search pages across all spaces…"
+                className="w-full rounded-xl border border-card-border bg-white py-2.5 pl-8 pr-4 text-sm font-semibold text-ink outline-none focus:border-accent/60 focus:ring-2 focus:ring-accent/10"
+              />
+            </div>
+            <button className="rounded-xl bg-accent px-4 py-2 text-sm font-extrabold text-white">Search</button>
+            {searchQuery && <Link href="/spaces" className="flex items-center rounded-xl border border-card-border px-3 py-2 text-sm font-semibold text-ink-secondary hover:bg-page">Clear</Link>}
+          </form>
+
+          {/* Search results */}
+          {searchQuery && (
+            <div className="mt-3">
+              <p className="mb-2 text-[11px] font-extrabold uppercase tracking-wide text-ink-secondary">
+                {searchResults.length} result{searchResults.length !== 1 ? "s" : ""} for &ldquo;{searchQuery}&rdquo;
+              </p>
+              {searchResults.length > 0 ? (
+                <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                  {searchResults.map((p) => (
+                    <Link key={p.id} href={`/s/${p.space.key}/pages/${p.id}`} className="flex items-start gap-2.5 rounded-xl border border-card-border bg-white p-3 transition hover:border-accent/40 hover:bg-card">
+                      <span className="mt-0.5 text-base leading-none">{p.emoji ?? "📄"}</span>
+                      <div className="min-w-0">
+                        <p className="truncate text-[13px] font-bold text-ink">{p.title}</p>
+                        <p className="mt-0.5 text-[11px] font-semibold text-ink-secondary">{p.space.iconEmoji} {p.space.name}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p className="rounded-xl border border-dashed border-card-border bg-white p-4 text-sm text-ink-secondary">No pages found for &ldquo;{searchQuery}&rdquo;.</p>
+              )}
+            </div>
+          )}
         </div>
       </section>
 

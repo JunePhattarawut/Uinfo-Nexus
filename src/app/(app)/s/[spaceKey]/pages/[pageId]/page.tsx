@@ -7,7 +7,9 @@ import { RichTextEditor } from "@/components/RichTextEditor";
 import { RichTextRenderer } from "@/components/RichTextRenderer";
 import { CodexPageTreeDnd } from "@/components/CodexPageTreeDnd";
 import * as codex from "@/modules/codex/service";
-import { addAttachmentAction, addPageCommentAction, lockPageAction, restoreVersionAction, unlockPageAction, updatePageAction, createPageAction, renamePageByFormAction } from "../../actions";
+import { addAttachmentAction, addPageCommentAction, deletePageAction, lockPageAction, restoreVersionAction, unlockPageAction, updatePageAction, createPageAction, renamePageByFormAction } from "../../actions";
+
+const EMOJI_PRESETS = ["📄","📝","📚","📖","🗒","🗂","📋","🔖","💡","🚀","⚙️","🎯","🏗","🔧","📊","📈","🗺","🧩","🌐","💬","🔐","📌","✅","🎨","🧪","📦","🛠","👥","🌟","💎","🏠","🔑"];
 
 type RichNode = { type?: string; text?: string; attrs?: Record<string, unknown>; content?: RichNode[] };
 
@@ -76,6 +78,8 @@ export default async function PageDetail({ params }: { params: Promise<{ spaceKe
   const addAttachment = addAttachmentAction.bind(null, spaceKey, page.id);
   const createPage = createPageAction.bind(null, spaceKey, page.spaceId);
   const renamePage = renamePageByFormAction.bind(null, spaceKey);
+  const deletePage = deletePageAction.bind(null, spaceKey, page.id);
+  const deletePageFromTree = deletePageAction.bind(null, spaceKey);
 
   return (
     <div className="space-y-5">
@@ -168,6 +172,11 @@ export default async function PageDetail({ params }: { params: Promise<{ spaceKe
                     🔓 Unlock
                   </button>
                 </form>
+                <form action={deletePage} onSubmit={(e) => { if (!confirm(`Delete "${page.title}" and all its children? This cannot be undone.`)) e.preventDefault(); }}>
+                  <button className="rounded-xl border border-red-200 px-3 py-1.5 text-[12px] font-bold text-red-600 hover:bg-red-50">
+                    🗑 Delete page
+                  </button>
+                </form>
               </div>
             </div>
             <form action={update} className="space-y-4 p-5">
@@ -178,6 +187,18 @@ export default async function PageDetail({ params }: { params: Promise<{ spaceKe
                 placeholder="Page title"
                 className="w-full rounded-xl border border-card-border bg-page px-3 py-2.5 font-heading text-[15px] font-bold text-ink outline-none placeholder:text-ink-secondary/50 focus:border-accent/60 disabled:opacity-50"
               />
+              {/* Page emoji picker */}
+              <div>
+                <p className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-ink-secondary">Page icon</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {EMOJI_PRESETS.map((emoji) => (
+                    <label key={emoji} className="cursor-pointer rounded-lg border border-card-border p-1.5 text-base leading-none transition has-[:checked]:border-accent has-[:checked]:bg-accent/10">
+                      <input type="radio" name="emoji" value={emoji} defaultChecked={emoji === (currentPage?.emoji ?? "📄")} className="sr-only" />
+                      {emoji}
+                    </label>
+                  ))}
+                </div>
+              </div>
               <RichTextEditor
                 name="contentText"
                 defaultValue={codex.textFromDoc(page.content)}
@@ -257,6 +278,7 @@ export default async function PageDetail({ params }: { params: Promise<{ spaceKe
                 spaceKey={spaceKey}
                 createPageAction={createPage}
                 renamePageAction={renamePage}
+                deletePageAction={deletePageFromTree}
                 activePageId={page.id}
               />
             </div>

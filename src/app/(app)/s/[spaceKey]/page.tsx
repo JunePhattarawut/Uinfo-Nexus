@@ -5,7 +5,9 @@ import { prisma } from "@/lib/db";
 import { RichTextEditor } from "@/components/RichTextEditor";
 import { CodexPageTreeDnd } from "@/components/CodexPageTreeDnd";
 import * as codex from "@/modules/codex/service";
-import { createPageAction, renamePageByFormAction } from "./actions";
+import { createPageAction, deletePageAction, renamePageByFormAction, updateSpaceAction } from "./actions";
+
+const EMOJI_PRESETS = ["📄","📝","📚","📖","🗒","🗂","📋","🔖","💡","🚀","⚙️","🎯","🏗","🔧","📊","📈","🗺","🧩","🌐","💬","🔐","📌","✅","🎨","🧪","📦","🛠","👥","🌟","💎","🏠","🔑"];
 
 function countChildren(pages: Array<{ parentId: string | null }>, pageId: string) {
   return pages.filter((page) => page.parentId === pageId).length;
@@ -21,8 +23,10 @@ export default async function SpacePage({ params }: { params: Promise<{ spaceKey
   const { spaceKey } = await params;
   if (!active) return <p>No active workspace</p>;
   const space = await codex.getSpace(user.id, active.id, spaceKey);
-  const createPage = createPageAction.bind(null, space.key, space.id);
-  const renamePage = renamePageByFormAction.bind(null, space.key);
+  const createPage = createPageAction.bind(null, spaceKey, space.id);
+  const renamePage = renamePageByFormAction.bind(null, spaceKey);
+  const deletePage = deletePageAction.bind(null, spaceKey);
+  const updateSpace = updateSpaceAction.bind(null, spaceKey);
   const [recentPages, attachmentCount, linkedIssueCount, commentCount] = await Promise.all([
     prisma.page.findMany({
       where: { workspaceId: active.id, spaceId: space.id, deletedAt: null },
@@ -50,6 +54,7 @@ export default async function SpacePage({ params }: { params: Promise<{ spaceKey
             <div className="mt-4 flex flex-wrap gap-2">
               <Link href={`/search?q=${encodeURIComponent(space.key)}&type=page`} className="rounded-xl bg-accent px-4 py-2 text-sm font-extrabold text-white">Search this space</Link>
               <a href="#create-page" className="rounded-xl border border-card-border bg-card px-4 py-2 text-sm font-extrabold text-ink hover:bg-page">Create page</a>
+              <a href="#edit-space" className="rounded-xl border border-card-border bg-card px-4 py-2 text-sm font-extrabold text-ink hover:bg-page">Edit space</a>
             </div>
           </div>
           <div className="rounded-2xl border border-card-border bg-card/90 p-4 shadow-sm">
@@ -77,7 +82,7 @@ export default async function SpacePage({ params }: { params: Promise<{ spaceKey
               </div>
               <span className="rounded-full bg-page px-2.5 py-1 text-xs font-bold text-ink-secondary ring-1 ring-card-border">{space.pages.length}</span>
             </div>
-            <div className="mt-4"><CodexPageTreeDnd pages={space.pages} spaceKey={space.key} createPageAction={createPage} renamePageAction={renamePage} /></div>
+            <div className="mt-4"><CodexPageTreeDnd pages={space.pages} spaceKey={space.key} createPageAction={createPage} renamePageAction={renamePage} deletePageAction={deletePage} /></div>
           </section>
         </aside>
 
@@ -106,6 +111,7 @@ export default async function SpacePage({ params }: { params: Promise<{ spaceKey
             </div>
           </section>
 
+          {/* ── Create page ── */}
           <section id="create-page" className="rounded-2xl border border-card-border bg-card p-4 shadow-sm">
             <div className="mb-4">
               <p className="text-[11px] font-extrabold uppercase tracking-wide text-accent">Confluence-style authoring</p>
@@ -120,8 +126,57 @@ export default async function SpacePage({ params }: { params: Promise<{ spaceKey
                   {space.pages.map((p) => <option key={p.id} value={p.id}>{p.title}</option>)}
                 </select>
               </div>
+              {/* Page emoji picker */}
+              <div>
+                <p className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-ink-secondary">Page icon</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {EMOJI_PRESETS.map((emoji, i) => (
+                    <label key={emoji} className="cursor-pointer rounded-lg border border-card-border p-1.5 text-lg leading-none transition has-[:checked]:border-accent has-[:checked]:bg-accent/10">
+                      <input type="radio" name="emoji" value={emoji} defaultChecked={i === 0} className="sr-only" />
+                      {emoji}
+                    </label>
+                  ))}
+                </div>
+              </div>
               <RichTextEditor name="contentText" placeholder="Start with /style markdown: # Heading, - list, | table |, ``` code" minHeightClassName="min-h-48" />
               <button className="rounded-xl bg-accent px-4 py-2 font-heading text-sm font-extrabold text-white">Create page</button>
+            </form>
+          </section>
+
+          {/* ── Edit space ── */}
+          <section id="edit-space" className="rounded-2xl border border-card-border bg-card p-4 shadow-sm">
+            <div className="mb-4">
+              <p className="text-[11px] font-extrabold uppercase tracking-wide text-accent">Space settings</p>
+              <h2 className="font-heading text-xl font-extrabold text-ink">Edit space</h2>
+              <p className="mt-1 text-sm text-ink-secondary">Update name, icon, and description. Space key cannot be changed.</p>
+            </div>
+            <form action={updateSpace} className="space-y-4">
+              <div className="grid gap-3 md:grid-cols-2">
+                <div>
+                  <label className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-wide text-ink-secondary">Space name</label>
+                  <input name="name" defaultValue={space.name} required placeholder="Team Handbook" className="w-full rounded-xl border border-card-border bg-page px-3 py-2.5 text-sm font-semibold text-ink outline-none focus:border-accent/60" />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-wide text-ink-secondary">Space key (read-only)</label>
+                  <input value={space.key} disabled className="w-full rounded-xl border border-card-border bg-page px-3 py-2.5 font-mono text-sm font-bold text-ink-secondary opacity-60" readOnly />
+                </div>
+              </div>
+              <div>
+                <label className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-wide text-ink-secondary">Description</label>
+                <textarea name="description" defaultValue={space.description ?? ""} rows={2} placeholder="What is this space for?" className="w-full resize-none rounded-xl border border-card-border bg-page px-3 py-2.5 text-sm leading-6 text-ink outline-none focus:border-accent/60" />
+              </div>
+              <div>
+                <p className="mb-1.5 text-[11px] font-extrabold uppercase tracking-wide text-ink-secondary">Space icon</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {EMOJI_PRESETS.map((emoji) => (
+                    <label key={emoji} className="cursor-pointer rounded-lg border border-card-border p-1.5 text-lg leading-none transition has-[:checked]:border-accent has-[:checked]:bg-accent/10">
+                      <input type="radio" name="iconEmoji" value={emoji} defaultChecked={emoji === space.iconEmoji} className="sr-only" />
+                      {emoji}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <button className="rounded-xl bg-accent px-4 py-2 font-heading text-sm font-extrabold text-white">Save changes</button>
             </form>
           </section>
         </main>
