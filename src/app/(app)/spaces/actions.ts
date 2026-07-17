@@ -9,7 +9,7 @@ export async function createSpaceAction(formData: FormData) {
   const ctx = await actionGuard("space:create");
   if (!ctx) return;
   const space = await codex.createSpace(ctx.user.id, ctx.workspace.id, createSpaceSchema.parse({
-    key: String(formData.get("key") || "").trim().toUpperCase(),
+    key: String(formData.get("key") || "").trim().toUpperCase().replace(/[^A-Z0-9]/g, ""),
     name: String(formData.get("name") || ""),
     description: String(formData.get("description") || ""),
     iconEmoji: String(formData.get("iconEmoji") || "📄"),

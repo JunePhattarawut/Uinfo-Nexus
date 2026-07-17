@@ -267,12 +267,16 @@ export default async function CodexHomePage({ searchParams }: { searchParams: Pr
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[11px] font-bold uppercase tracking-wide text-ink-secondary">Space key</label>
+                <label className="mb-1.5 block text-[11px] font-bold uppercase tracking-wide text-ink-secondary">
+                  Space key <span className="normal-case font-normal text-ink-secondary/60">(letters &amp; numbers only)</span>
+                </label>
                 <input
                   name="key"
                   required
                   placeholder="e.g. TEAM"
                   maxLength={12}
+                  pattern="[A-Za-z0-9]+"
+                  title="Letters and numbers only, no spaces or special characters"
                   className="w-full rounded-xl border border-card-border bg-page px-3 py-2.5 font-mono text-sm font-bold uppercase tracking-wide text-ink outline-none placeholder:normal-case placeholder:font-normal placeholder:tracking-normal placeholder:text-ink-secondary/50 focus:border-accent/60"
                 />
               </div>
