@@ -11,7 +11,7 @@ import { createPageCommentSchema, createPageSchema, createSpaceSchema, movePageS
 export async function createSpaceAction(formData: FormData) {
   const ctx = await actionGuard("space:create");
   if (!ctx) return;
-  const space = await codex.createSpace(ctx.user.id, ctx.workspace.id, createSpaceSchema.parse({ key: String(formData.get("key") || ""), name: String(formData.get("name") || ""), description: String(formData.get("description") || "") }));
+  const space = await codex.createSpace(ctx.user.id, ctx.workspace.id, createSpaceSchema.parse({ key: String(formData.get("key") || "").trim().toUpperCase(), name: String(formData.get("name") || ""), description: String(formData.get("description") || "") }));
   revalidatePath("/"); redirect(`/s/${space.key}`);
 }
 
