@@ -236,9 +236,17 @@ export function AppSidebar({
             <span className="block truncate text-[13px] font-semibold text-white/90">
               {isCodex ? "Uinfo Codex" : "Uinfo Nexus"}
             </span>
-            <span className="block text-[10.5px] text-sidebar-muted/70">
-              {isCodex ? "Knowledge Base" : "Workspace"}
-            </span>
+            {isCodex ? (
+              <Link
+                href="/"
+                className="block text-[10.5px] text-sidebar-muted/70 hover:text-white/70 transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                ← Uinfo Nexus
+              </Link>
+            ) : (
+              <span className="block text-[10.5px] text-sidebar-muted/70">Workspace</span>
+            )}
           </span>
         </Link>
         <SidebarCollapseButton />
