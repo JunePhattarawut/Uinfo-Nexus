@@ -254,115 +254,150 @@ export function AppSidebar({
 
       {/* Nav */}
       <nav className="min-h-0 flex-1 overflow-y-auto px-2.5 py-2">
-        {/* Primary */}
-        <div className="flex flex-col gap-px">
-          <NavItem href="/" icon={<Home size={14} strokeWidth={1.75} />} label="Home" />
-          <NavItem href="/projects" icon={<Layers2 size={14} strokeWidth={1.75} />} label="Projects" />
-          <NavItem
-            href="/notifications"
-            icon={<Bell size={14} strokeWidth={1.75} />}
-            label="Notifications"
-            badge={notificationCount > 0 ? String(notificationCount) : undefined}
-          />
-        </div>
+        {isCodex ? (
+          /* ── Codex navigation ── */
+          <>
+            <div className="flex flex-col gap-px">
+              <NavItem href="/spaces" icon={<BookOpen size={14} strokeWidth={1.75} />} label="All Spaces" />
+              <NavItem href="/search?type=page" icon={<FileText size={14} strokeWidth={1.75} />} label="Search pages" />
+            </div>
 
-        {/* Starred */}
-        <SectionLabel>Starred</SectionLabel>
-        <div className="flex flex-col gap-px">
-          {starredProjects.length > 0 ? (
-            starredProjects.map((p) => (
-              <ProjectRow key={p.id} project={p} isStarred onStar={toggleStar} onVisit={recordVisit} />
-            ))
-          ) : (
-            <p className="px-2 py-1 text-[11px] text-sidebar-muted/50">
-              Hover a project and click ☆ to pin here
-            </p>
-          )}
-        </div>
-
-        {/* Recent */}
-        <SectionLabel>Recent</SectionLabel>
-        <div className="flex flex-col gap-px">
-          {recentProjects.length > 0 ? (
-            recentProjects.map((p) => (
-              <ProjectRow
-                key={p.id}
-                project={p}
-                isStarred={starredIds.has(p.id)}
-                onStar={toggleStar}
-                onVisit={recordVisit}
-              />
-            ))
-          ) : (
-            <p className="px-2 py-1 text-[11px] text-sidebar-muted/50">No recent projects yet</p>
-          )}
-        </div>
-
-        {/* All Projects — expandable */}
-        <div className="mt-0.5">
-          <button
-            type="button"
-            onClick={() => setShowAllProjects((v) => !v)}
-            className="wh-sidebar-text flex w-full items-center gap-1.5 rounded-md px-2 py-[7px] text-[12.5px] font-medium text-sidebar-text/50 transition-colors hover:bg-white/[.05] hover:text-sidebar-text/80"
-          >
-            <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
-              <ChevronRight
-                size={13}
-                strokeWidth={2}
-                className={`transition-transform duration-150 ${showAllProjects ? "rotate-90" : ""}`}
-              />
-            </span>
-            <span className="wh-sidebar-text flex-1 text-left">All Projects</span>
-            <span className="wh-sidebar-text rounded bg-white/[.07] px-1.5 py-px text-[10px] tabular-nums text-sidebar-muted/60">
-              {projects.length}
-            </span>
-          </button>
-
-          {showAllProjects && (
-            <div className="mt-0.5 flex flex-col gap-px">
-              {projects.slice(0, 10).map((p) => (
-                <ProjectRow
-                  key={p.id}
-                  project={p}
-                  isStarred={starredIds.has(p.id)}
-                  onStar={toggleStar}
-                  onVisit={recordVisit}
-                />
-              ))}
+            <SectionLabel>Spaces</SectionLabel>
+            <div className="flex flex-col gap-px">
+              {spaces.length > 0 ? (
+                spaces.map((space) => (
+                  <NavItem
+                    key={space.id}
+                    href={`/s/${space.key}`}
+                    icon={<span className="text-[14px] leading-none">{space.iconEmoji}</span>}
+                    label={space.name}
+                  />
+                ))
+              ) : (
+                <p className="px-2 py-1 text-[11px] text-sidebar-muted/50">No spaces yet</p>
+              )}
               <Link
-                href="/projects"
-                className="mt-0.5 flex items-center gap-2 rounded-md px-2 py-[6px] text-[11.5px] font-medium text-sidebar-muted/40 transition-colors hover:bg-white/[.05] hover:text-sidebar-muted/80"
+                href="/spaces#new-space"
+                className="flex items-center gap-2 rounded-md px-2 py-[7px] text-[12.5px] font-medium text-sidebar-muted/40 transition-colors hover:bg-white/[.05] hover:text-sidebar-text/80"
               >
-                <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
-                  <ArrowRight size={12} strokeWidth={2} />
-                </span>
-                <span className="wh-sidebar-text">
-                  {projects.length > 10
-                    ? `More Projects (${projects.length - 10} more)`
-                    : "More Projects"}
-                </span>
+                <span className="flex h-4 w-4 shrink-0 items-center justify-center opacity-60 text-[14px]">+</span>
+                <span className="wh-sidebar-text">New Space</span>
               </Link>
             </div>
-          )}
-        </div>
 
-        {/* Spaces */}
-        <SectionLabel>Spaces</SectionLabel>
-        <div className="flex flex-col gap-px">
-          {spaces.slice(0, 4).map((space) => (
-            <NavItem key={space.id} href={`/s/${space.key}`} icon={<span className="text-[14px] leading-none">{space.iconEmoji}</span>} label={space.name} />
-          ))}
-          <NavItem href="/spaces" icon={<FileText size={14} strokeWidth={1.75} />} label="Uinfo Codex" />
-        </div>
+            <SectionLabel>Workspace</SectionLabel>
+            <div className="flex flex-col gap-px">
+              <NavItem href="/dashboards" icon={<LayoutDashboard size={14} strokeWidth={1.75} />} label="Dashboards" />
+              {canAdmin && (
+                <NavItem href="/admin" icon={<Settings size={14} strokeWidth={1.75} />} label="Admin" />
+              )}
+            </div>
+          </>
+        ) : (
+          /* ── Nexus navigation ── */
+          <>
+            <div className="flex flex-col gap-px">
+              <NavItem href="/" icon={<Home size={14} strokeWidth={1.75} />} label="Home" />
+              <NavItem href="/projects" icon={<Layers2 size={14} strokeWidth={1.75} />} label="Projects" />
+              <NavItem
+                href="/notifications"
+                icon={<Bell size={14} strokeWidth={1.75} />}
+                label="Notifications"
+                badge={notificationCount > 0 ? String(notificationCount) : undefined}
+              />
+            </div>
 
-        {/* Workspace */}
-        <SectionLabel>Workspace</SectionLabel>
-        <div className="flex flex-col gap-px">
-          <NavItem href="/dashboards" icon={<LayoutDashboard size={14} strokeWidth={1.75} />} label="Dashboards" />
-          {canAdmin && (
-            <NavItem href="/admin" icon={<Settings size={14} strokeWidth={1.75} />} label="Admin" />
-          )}
-        </div>
+            <SectionLabel>Starred</SectionLabel>
+            <div className="flex flex-col gap-px">
+              {starredProjects.length > 0 ? (
+                starredProjects.map((p) => (
+                  <ProjectRow key={p.id} project={p} isStarred onStar={toggleStar} onVisit={recordVisit} />
+                ))
+              ) : (
+                <p className="px-2 py-1 text-[11px] text-sidebar-muted/50">
+                  Hover a project and click ☆ to pin here
+                </p>
+              )}
+            </div>
+
+            <SectionLabel>Recent</SectionLabel>
+            <div className="flex flex-col gap-px">
+              {recentProjects.length > 0 ? (
+                recentProjects.map((p) => (
+                  <ProjectRow
+                    key={p.id}
+                    project={p}
+                    isStarred={starredIds.has(p.id)}
+                    onStar={toggleStar}
+                    onVisit={recordVisit}
+                  />
+                ))
+              ) : (
+                <p className="px-2 py-1 text-[11px] text-sidebar-muted/50">No recent projects yet</p>
+              )}
+            </div>
+
+            <div className="mt-0.5">
+              <button
+                type="button"
+                onClick={() => setShowAllProjects((v) => !v)}
+                className="wh-sidebar-text flex w-full items-center gap-1.5 rounded-md px-2 py-[7px] text-[12.5px] font-medium text-sidebar-text/50 transition-colors hover:bg-white/[.05] hover:text-sidebar-text/80"
+              >
+                <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
+                  <ChevronRight
+                    size={13}
+                    strokeWidth={2}
+                    className={`transition-transform duration-150 ${showAllProjects ? "rotate-90" : ""}`}
+                  />
+                </span>
+                <span className="wh-sidebar-text flex-1 text-left">All Projects</span>
+                <span className="wh-sidebar-text rounded bg-white/[.07] px-1.5 py-px text-[10px] tabular-nums text-sidebar-muted/60">
+                  {projects.length}
+                </span>
+              </button>
+
+              {showAllProjects && (
+                <div className="mt-0.5 flex flex-col gap-px">
+                  {projects.slice(0, 10).map((p) => (
+                    <ProjectRow
+                      key={p.id}
+                      project={p}
+                      isStarred={starredIds.has(p.id)}
+                      onStar={toggleStar}
+                      onVisit={recordVisit}
+                    />
+                  ))}
+                  <Link
+                    href="/projects"
+                    className="mt-0.5 flex items-center gap-2 rounded-md px-2 py-[6px] text-[11.5px] font-medium text-sidebar-muted/40 transition-colors hover:bg-white/[.05] hover:text-sidebar-muted/80"
+                  >
+                    <span className="flex h-[18px] w-[18px] shrink-0 items-center justify-center">
+                      <ArrowRight size={12} strokeWidth={2} />
+                    </span>
+                    <span className="wh-sidebar-text">
+                      {projects.length > 10
+                        ? `More Projects (${projects.length - 10} more)`
+                        : "More Projects"}
+                    </span>
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <SectionLabel>Codex</SectionLabel>
+            <div className="flex flex-col gap-px">
+              <NavItem href="/spaces" icon={<BookOpen size={14} strokeWidth={1.75} />} label="Uinfo Codex" />
+            </div>
+
+            <SectionLabel>Workspace</SectionLabel>
+            <div className="flex flex-col gap-px">
+              <NavItem href="/dashboards" icon={<LayoutDashboard size={14} strokeWidth={1.75} />} label="Dashboards" />
+              {canAdmin && (
+                <NavItem href="/admin" icon={<Settings size={14} strokeWidth={1.75} />} label="Admin" />
+              )}
+            </div>
+          </>
+        )}
       </nav>
 
       {/* Footer */}
