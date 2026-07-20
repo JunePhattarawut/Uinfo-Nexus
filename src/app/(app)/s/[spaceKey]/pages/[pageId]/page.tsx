@@ -8,6 +8,7 @@ import { RichTextRenderer } from "@/components/RichTextRenderer";
 import { CodexPageTreeDnd } from "@/components/CodexPageTreeDnd";
 import * as codex from "@/modules/codex/service";
 import { addAttachmentAction, addPageCommentAction, deletePageAction, lockPageAction, restoreVersionAction, unlockPageAction, updatePageAction, createPageAction, renamePageByFormAction } from "../../actions";
+import { DeletePageButton } from "@/components/DeletePageButton";
 
 const EMOJI_PRESETS = ["📄","📝","📚","📖","🗒","🗂","📋","🔖","💡","🚀","⚙️","🎯","🏗","🔧","📊","📈","🗺","🧩","🌐","💬","🔐","📌","✅","🎨","🧪","📦","🛠","👥","🌟","💎","🏠","🔑"];
 
@@ -172,11 +173,11 @@ export default async function PageDetail({ params }: { params: Promise<{ spaceKe
                     🔓 Unlock
                   </button>
                 </form>
-                <form action={deletePage} onSubmit={(e) => { if (!confirm(`Delete "${page.title}" and all its children? This cannot be undone.`)) e.preventDefault(); }}>
-                  <button className="rounded-xl border border-red-200 px-3 py-1.5 text-[12px] font-bold text-red-600 hover:bg-red-50">
-                    🗑 Delete page
-                  </button>
-                </form>
+                <DeletePageButton
+                  action={deletePage}
+                  title={page.title}
+                  hasChildren={spacePages.some((p) => p.parentId === page.id)}
+                />
               </div>
             </div>
             <form action={update} className="space-y-4 p-5">
