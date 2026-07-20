@@ -168,6 +168,7 @@ export function AppSidebar({
   canAdmin?: boolean;
 }) {
   const pathname = usePathname();
+  const isCodex = pathname.startsWith("/spaces") || pathname.startsWith("/s/");
   const [starredIds, setStarredIds] = useState<Set<string>>(new Set());
   const [recentIds, setRecentIds] = useState<string[]>([]);
   const [showAllProjects, setShowAllProjects] = useState(false);
@@ -221,13 +222,23 @@ export function AppSidebar({
     <aside className="wh-sidebar sticky top-0 flex h-screen w-[256px] shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-text">
       {/* Header */}
       <div className="flex h-[68px] items-center gap-2.5 border-b border-sidebar-border px-4">
-        <Link href="/" className="flex min-w-0 flex-1 items-center gap-2.5">
-          <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[7px] bg-accent font-heading text-[13px] font-bold text-white">
-            UN
-          </span>
+        <Link href={isCodex ? "/spaces" : "/"} className="flex min-w-0 flex-1 items-center gap-2.5">
+          {isCodex ? (
+            <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[7px] bg-[#2D2B8E] text-[16px]">
+              📚
+            </span>
+          ) : (
+            <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[7px] bg-accent font-heading text-[13px] font-bold text-white">
+              UN
+            </span>
+          )}
           <span className="wh-sidebar-text min-w-0">
-            <span className="block truncate text-[13px] font-semibold text-white/90">Uinfo Nexus</span>
-            <span className="block text-[10.5px] text-sidebar-muted/70">Workspace</span>
+            <span className="block truncate text-[13px] font-semibold text-white/90">
+              {isCodex ? "Uinfo Codex" : "Uinfo Nexus"}
+            </span>
+            <span className="block text-[10.5px] text-sidebar-muted/70">
+              {isCodex ? "Knowledge Base" : "Workspace"}
+            </span>
           </span>
         </Link>
         <SidebarCollapseButton />
